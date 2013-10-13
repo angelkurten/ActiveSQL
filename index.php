@@ -1,7 +1,10 @@
 <?php
-	error_reporting(0);
-	require_once('core/active.php');
-	require_once('core/errors.php');
+
+	require_once('core/lib.php');
+
+	$libs=array('core/active.php');
+	echo import($libs);
+
 	//creo el objeto active	
 	$ac= new active();
 	//array con los campos a seleccionar

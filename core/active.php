@@ -38,7 +38,7 @@
 					{
 						$this->query.="; ";
 					}
-					echo "SQL Generado: ".$this->query;
+					echo "<br><b>SQL Generado: ".$this->query."</b>";
 					$this->getQuery();
 					$result=$this->rows;
 				}
@@ -48,7 +48,7 @@
 					throw new Exception($this->mensaje);
 				}
 			} catch (Exception $e) {
-				echo 'Error de ActiveSQL: ',  $e->getMessage(), "\n";
+				echo '</br><b>Error de ActiveSQL: ',  $e->getMessage(), "\n</b>";
 			}
 			$this->liberar();
 			return $result;
