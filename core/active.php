@@ -14,7 +14,6 @@
 		public function __construct()
 		{
 			$this->mensaje="";
-			$this->liberar();
 		}
 
 		//funcion para relizar una consulta de tipo SELECT
@@ -42,17 +41,16 @@
 					echo "SQL Generado: ".$this->query;
 					$this->getQuery();
 					$result=$this->rows;
-					
 				}
 				else
 				{
 					$result=$this->mensaje;
 					throw new Exception($this->mensaje);
 				}
-				} catch (Exception $e) {
-					echo 'Error de ActiveSQL: ',  $e->getMessage(), "\n";
-				}
-
+			} catch (Exception $e) {
+				echo 'Error de ActiveSQL: ',  $e->getMessage(), "\n";
+			}
+			$this->liberar();
 			return $result;
 		}
 
@@ -62,6 +60,7 @@
 			if(gettype($array)!="array")
 			{
 				$this->mensaje="Lo sentimos el select solo acepta parametros tipo array";
+				$this->select="";
 			}
 			else
 			{
@@ -76,6 +75,7 @@
 			if(gettype($array)!="array")
 			{
 				$this->mensaje= "Lo sentimos el where solo acepta parametros tipo array";
+				$this->where="";
 			}
 			else
 			{
@@ -97,8 +97,8 @@
 
 		private function liberar()
 		{
-			$this->where=array();
-			$this->select=array();
+			$this->where="";
+			$this->select="";
 			$this->mensaje="";
 			$this->rows=array();
 		}
