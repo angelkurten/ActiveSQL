@@ -1,5 +1,7 @@
 <?php
+	error_reporting(0);
 	require_once('core/active.php');
+	require_once('core/errors.php');
 	//creo el objeto active	
 	$ac= new active();
 	//array con los campos a seleccionar
@@ -9,7 +11,7 @@
 	//array con el filtro a aplicar a los datos
 	$array= array('id'=>'1');
 	//envio a la RAM los filtros a aplicar
-	$ac->where($array);
+	$ac->where('s');
 	//recupero los datos de la RAM y ejecuto la consulta, 
 	//por ultimo limpio la RAM
 	$videos=$ac->get('videos');

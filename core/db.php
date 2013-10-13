@@ -1,4 +1,5 @@
 <?php
+	error_reporting(0);
 	//clase para el manejo de la conexion con la base de datos
 	abstract class db{
 		private static $db_host='localhost';
