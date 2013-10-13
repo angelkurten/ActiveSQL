@@ -21,6 +21,10 @@
 	}
 
 	echo '<hr>';
+	//array con los campos a seleccionar
+	$array= array('nombre', 'descripcion');
+	//envio a la RAM los campos a seleccionar
+	$ac->select($array);
 	//recupero los datos de la RAM, ejecuto la consulta y 
 	//limpio la RAM
 	$user=$ac->get('cursos');

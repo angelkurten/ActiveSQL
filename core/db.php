@@ -38,7 +38,7 @@
 				//abro la conexion
 				$this->open_connection();
 				//realizo la consulta
-				$result=$this->conn->query($this->query);
+				$result=$this->conn->query($this->query);				
 				//cierro la conexion
 				$this->close_connection();
 			}
@@ -50,18 +50,25 @@
 
 		//traer los resultador de una consulta tipo SELECT, en una array
 		protected function getQuery(){
-			//abro la conexion
-			$this->open_connection();
-			//realizo la consulta
-			$result=$this->conn->query($this->query);
-			//creo el array con los resultados
-			while($this->rows[]=$result->fetch_assoc());
-			//libero la memoria
-			$result->close();
-			//cierro la conexion
-			$this->close_connection();
-			//elimino el ultimo valor del vector
-			array_pop($this->rows);
+			try {
+				//abro la conexion
+				$this->open_connection();
+				//realizo la consulta
+				$result=$this->conn->query($this->query);
+				if (!$result) {
+					throw new Exception($this->conn->error);
+				}
+				//creo el array con los resultados
+				while($this->rows[]=$result->fetch_assoc());
+				//libero la memoria
+				$result->close();
+				//cierro la conexion
+				$this->close_connection();
+				//elimino el ultimo valor del vector
+				array_pop($this->rows);
+			} catch (Exception $e) {
+				echo 'Error de SQL: ',  $e->getMessage(), "\n";
+			}
 		}
 		
 	}
