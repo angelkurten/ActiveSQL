@@ -9,7 +9,7 @@
 		protected $query;
 		protected $rows=array();
 		private $conn;
-		public $mensaje='Hecho';
+		public $mensaje='';
 
 		//metodos abtractos para el CRUD de las clases que hereden
 		//mrtdo para consultar
@@ -58,8 +58,11 @@
 				if (!$result) {
 					throw new Exception($this->conn->error);
 				}
-				//creo el array con los resultados
-				while($this->rows[]=$result->fetch_assoc());
+				else
+				{
+					//creo el array con los resultados
+					while($this->rows[]=$result->fetch_assoc());
+				}
 				//libero la memoria
 				$result->close();
 				//cierro la conexion
@@ -67,7 +70,7 @@
 				//elimino el ultimo valor del vector
 				array_pop($this->rows);
 			} catch (Exception $e) {
-				echo 'Error de SQL: ',  $e->getMessage(), "\n";
+				echo '<br><b>Error de SQL: ',  $e->getMessage(), "\n</b>";
 			}
 		}
 		
