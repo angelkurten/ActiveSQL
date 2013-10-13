@@ -14,40 +14,44 @@
 		public function __construct()
 		{
 			$this->mensaje="";
+			$this->liberar();
 		}
 
 		//funcion para relizar una consulta de tipo SELECT
 		public function get($table='')
 		{
 			$result="";
-			if($this->mensaje=="")
-			{
-				if ($this->select!="") {
-					$this->query="SELECT ". $this->select." FROM ".$table."";
-					$this->select="";
-				}
-				else
+			try {
+				if($this->mensaje=="")
 				{
-					$this->query="SELECT * FROM ".$table;
-				}
+					if ($this->select!="") {
+						$this->query="SELECT ". $this->select." FROM ".$table."";
+					}
+					else
+					{
+						$this->query="SELECT * FROM ".$table;
+					}
 
-				if ($this->where!="") {
-					$this->query.=" WHERE ". $this->where."; ";
-					$this->where="";
+					if ($this->where!="") {
+						$this->query.=" WHERE ". $this->where."; ";
+					}
+					else
+					{
+						$this->query.="; ";
+					}
+					echo "SQL Generado: ".$this->query;
+					$this->getQuery();
+					$result=$this->rows;
+					
 				}
 				else
 				{
-					$this->query.="; ";
+					$result=$this->mensaje;
+					throw new Exception($this->mensaje);
 				}
-				echo "SQL Generado: ".$this->query;
-				$this->getQuery();
-				$result=$this->rows;
-				$this->rows=array();
-			}
-			else
-			{
-				$result=$this->mensaje;
-			}
+				} catch (Exception $e) {
+					echo 'Error de ActiveSQL: ',  $e->getMessage(), "\n";
+				}
 
 			return $result;
 		}
@@ -89,6 +93,14 @@
 				
 				$this->where=$sqldf;
 			}
+		}
+
+		private function liberar()
+		{
+			$this->where=array();
+			$this->select=array();
+			$this->mensaje="";
+			$this->rows=array();
 		}
 	}
 ?>
