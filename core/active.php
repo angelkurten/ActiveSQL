@@ -3,40 +3,40 @@
 	class active extends db
 	{
 		//variable para almacenar la consulta del where
-		private $where="";
+		private $where='';
 		//varaiable para almacenar los camos a filtrar en el GET
-		private $select="";
+		private $select='';
 		//variables para almacenar los campos a actualizar en el SET
-		private $set="";
+		private $set='';
 		//variable para los values del INSERT
-		private $values="";
+		private $values='';
 		
 		public function __construct()
 		{
-			$this->mensaje="";
+			$this->mensaje='';
 		}
 
 		//function para realizar una consulta de tipo SELECT
 		public function get($table)
 		{		
-			if($this->mensaje==""){
+			if($this->mensaje==''){
 				//construir consulta con o sin campos a filtrar
-				if($this->select!=""){
-					$this->query="SELECT ".$this->select." FROM ".$table;
+				if($this->select!=''){
+					$this->query='SELECT '.$this->select.' FROM '.$table;
 				}
 				else
 				{
-					$this->query="SELECT * FROM ".$table;
+					$this->query='SELECT * FROM '.$table;
 				}
 
 				//completar consulta con o sin filtro where
-				if($this->where!="")
+				if($this->where!='')
 				{
-					$this->query.=" WHERE ".$this->where;
+					$this->query.=' WHERE '.$this->where;
 				}
 				else
 				{
-					$this->query.=";";
+					$this->query.=';';
 				}
 
 				//ejecutar consulta
@@ -57,9 +57,9 @@
 		//funcion para guardar datos en una BD
 		public function save($table)
 		{
-			if($this->mensaje=="")
+			if($this->mensaje=='')
 			{
-				$this->query="INSERT INTO ".$table." VALUES ".$this->values.";";
+				$this->query='INSERT INTO '.$table.' VALUES '.$this->values.';';
 				
 				//ejecutar consulta
 				$this->executeQuery();
@@ -79,20 +79,18 @@
 		//funcion apra realizar actualizaciones en la BD
 		public function edit($table)
 		{
-			if($this->mensaje=="")
+			if($this->mensaje=='')
 			{
 				//construir consulta con o sin where
-				if($this->set!="")
+				if($this->set!='')
 				{
-					$this->query="UPDATE ".$table." SET ".$this->set."";
+					$this->query='UPDATE '.$table.' SET '.$this->set;
 				}
 				
-				if($this->where!="")
+				if($this->where!='')
 				{
-					$this->query.=" WHERE ".$this->where;
+					$this->query.=' WHERE '.$this->where;
 				}
-				//colocando el ; al final de la consulta
-				$this->query.=";";
 
 				$result=$this->executeQuery();
 			}
@@ -109,11 +107,11 @@
 		//function para borrar campos de la BD
 		public function delete($table)
 		{
-			if($this->mensaje=="")
+			if($this->mensaje=='')
 			{
 				$this->query='DELETE FROM '.$table;
-				if ($this->where!="") {
-					$this->query.=" WHERE ".$this->where.";";
+				if ($this->where!='') {
+					$this->query.=' WHERE '.$this->where;
 				}
 
 				$this->executeQuery();
