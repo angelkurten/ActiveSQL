@@ -53,4 +53,12 @@
 			echo '<br><b>Error de Import: ',  $e->getMessage(), "\n</b>";
 		}
 	}
+
+	//funcion para medir el tiempo de ejecucion de una consulta
+	function microtime_float()
+	{
+	    list($usec, $sec) = explode(" ", microtime());
+	    return ((float)$usec + (float)$sec);
+	}
+
 ?>

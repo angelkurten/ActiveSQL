@@ -1,25 +1,35 @@
 <?php
-
+	
 	require_once('core/lib.php');
 
 	$libs=array('core/active.php');
 	import($libs);
 
 	$ac=new active;
-
-	//consultar datos de la BD--------------------------
 	echo '<hr>';
-	//array con los campos a seleccionar
-	$array= array('nombre', 'email');
-	//envio a la RAM los campos a seleccionar
-	$ac->select($array);
-	//recupero los datos de la RAM, ejecuto la consulta y 
-	//limpio la RAM
-	$user=$ac->get('usuarios');
-	//muestro los datos en pantalla
-	foreach ($user as $key => $value) {
-		var_dump($value);
-	}
+	
+
+	//iniciar el tiempo de ejecion
+	$time_start = microtime_float();
+		//consultar datos de la BD-------------------------
+		//array con los campos a seleccionar
+		$array= array('nombre', 'email');
+		//envio a la RAM los campos a seleccionar
+		$ac->select($array);
+		//recupero los datos de la RAM, ejecuto la consulta y 
+		//limpio la RAM
+		$user=$ac->get('usuarios');
+		//muestro los datos en pantalla
+		foreach ($user as $key => $value) {
+			var_dump($value);
+		}
+
+	//finalizar el tiempo de ejecucion
+	$time_end = microtime_float();
+	//medir el tiempo de ejecucion
+	$time_total = $time_end - $time_start;
+	//mostrar el tiempo de ejecuion
+	echo "El codigo se ha ejecutado en $time_total segundos";
 
 	echo '<hr>';
 	

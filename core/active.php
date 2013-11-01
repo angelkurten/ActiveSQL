@@ -1,6 +1,5 @@
 <?php
 	require_once('db.php');
-
 	class active extends db
 	{
 		//variable para almacenar la consulta del where
