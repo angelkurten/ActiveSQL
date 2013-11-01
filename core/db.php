@@ -46,7 +46,7 @@
 			$this->open_connection();
 			//realizar consulta
 			$result=$this->conn->query($this->query);
-			var_dump($this->query);
+			//var_dump($this->query);
 			//cerrar conexion
 			$this->close_connection();
 		}
@@ -58,7 +58,7 @@
 			$this->open_connection();
 			//realizar la consulta
 			$result=$this->conn->query($this->query);
-			var_dump($this->query);
+			//var_dump($this->query);
 			//crear el array con los resultados
 			while($this->rows[]=$result->fetch_assoc());
 			//libero menomoeria

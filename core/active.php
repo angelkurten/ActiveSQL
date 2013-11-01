@@ -123,92 +123,61 @@
 		}
 
 		//funcion para actualizar
-		public function set($array)
+		public function set(array $array)
 		{
-			if(gettype($array)!="array")
-			{
-				$this->mensaje="SET: Solo se aceptan parametros de tipo array";
-				$this->set="";
+			//extraer las keys del array
+			$columnas=array_keys($array);
+			//extraer los values del array
+			$values=array_values($array);
+			//crear el array definitivo
+			for ($i=0; $i < count($values); $i++) { 
+				$sql[$i]="".$columnas[$i]." = '".addslashes($values[$i])."'";
 			}
-			else
-			{
-				//extraer las keys del array
-				$columnas=array_keys($array);
-				//extraer los values del array
-				$values=array_values($array);
-				//crear el array definitivo
-				for ($i=0; $i < count($values); $i++) { 
-					$sql[$i]="".$columnas[$i]." = '".addslashes($values[$i])."'";
-				}
-				//crear el sql definitivo 
-				$sqldf=implode(" and ", $sql);
+			//crear el sql definitivo 
+			$sqldf=implode(" and ", $sql);
 
-				//almaceno el sql en la propiedad
-				$this->set=$sqldf;
-			}
+			//almaceno el sql en la propiedad
+			$this->set=$sqldf;
 		}
 
 		//funcion para seleccionar campos de una tabla
-		public function select($array)
+		public function select(array $array)
 		{
-			if(gettype($array)!="array")
-			{
-				$this->mensaje="SELECT: Solo se aceptan parametros tipo array";
-				$this->select="";
-			}
-			else
-			{
-				$values=implode(" , ", $array);
-				$this->select=$values;
-			}
+			$values=implode(" , ", $array);
+			$this->select=$values;
 		}
 
 		//funcion para seleccionar los values
-		public function values($array)
+		public function values(array $array)
 		{
-			if(gettype($array)!="array")
-			{
-				$this->mensaje="VALUES: Solo se aceptan parametros tipo array";
-				$this->values="";
-			}
-			else
-			{
-				$values=array_values($array);
-				//crear un array definitivo con los arrays anteriores
-				for ($i=0; $i < count($values); $i++) {
-					var_dump(addslashes($values[$i]));
-					$sql[$i]="'".addslashes($values[$i])."'";
-				}
 
-				$values="(".implode(" , ", $sql).")";
-
-				$this->values=$values;
+			$values=array_values($array);
+			//crear un array definitivo con los arrays anteriores
+			for ($i=0; $i < count($values); $i++) {
+				var_dump(addslashes($values[$i]));
+				$sql[$i]="'".addslashes($values[$i])."'";
 			}
+
+			$values="(".implode(" , ", $sql).")";
+
+			$this->values=$values;
 		}
 
 		//funcion para realizar consultas tipo where
-		public function where($array)
+		public function where( array $array)
 		{
-			if(gettype($array)!="array")
-			{
-				$this->mensaje="WHERE: Solo se aceptan parametros tipo array";
-				$this->where="";
+			//extraer las keys del array
+			$columnas=array_keys($array);
+			//extraer todos los values del array
+			$values=array_values($array);
+			//crear un array definitivo con los arrays anteriores
+			for ($i=0; $i < count($values); $i++) { 
+				$sql[$i]="".$columnas[$i]." = '".addslashes($values[$i])."'";
 			}
-			else
-			{
-				//extraer las keys del array
-				$columnas=array_keys($array);
-				//extraer todos los values del array
-				$values=array_values($array);
-				//crear un array definitivo con los arrays anteriores
-				for ($i=0; $i < count($values); $i++) { 
-					$sql[$i]="".$columnas[$i]." = '".addslashes($values[$i])."'";
-				}
-				//creo el sql definitivo
-				$sqldf=implode(" and ", $sql);
+			//creo el sql definitivo
+			$sqldf=implode(" and ", $sql);
 
-				$this->where=$sqldf;
-			}
+			$this->where=$sqldf;
 		}
 
 		//funcion para liberar memoria
