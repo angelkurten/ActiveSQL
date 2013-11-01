@@ -1,4 +1,5 @@
 <?php
+	require_once('core/lib.php');
 	
 	//clase para manejo de la base de datos
 	abstract class db
@@ -12,7 +13,7 @@
 		protected $rows=array();
 		private $conn;
 		public $mensaje='';
-
+		
 
 		//metodos abstractos para el CRUD
 		abstract protected function get($table);

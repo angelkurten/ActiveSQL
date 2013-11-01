@@ -3,11 +3,7 @@
 	require_once('core/lib.php');
 
 	$libs=array('core/active.php');
-	echo import($libs);
-
-	$log = new myLogger();
-	$log->addLine(array("testing", "my", 'data'));
-	// si en éste punto no muestra errores, todo bien =D
+	import($libs);
 
 	//creo el objeto active	
 	$ac= new active();
