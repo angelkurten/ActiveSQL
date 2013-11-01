@@ -154,7 +154,6 @@
 			$values=array_values($array);
 			//crear un array definitivo con los arrays anteriores
 			for ($i=0; $i < count($values); $i++) {
-				var_dump(addslashes($values[$i]));
 				$sql[$i]="'".addslashes($values[$i])."'";
 			}
 

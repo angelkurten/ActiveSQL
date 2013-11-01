@@ -8,7 +8,7 @@
 		private static $db_user='root';
 		private static $db_pass='';
 		private static $set_charset='utf8';
-		protected $db_name='girucode';
+		protected $db_name='active';
 		protected $query;
 		protected $rows=array();
 		private $conn;
