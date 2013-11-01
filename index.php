@@ -5,6 +5,10 @@
 	$libs=array('core/active.php');
 	echo import($libs);
 
+	$log = new myLogger();
+	$log->addLine(array("testing", "my", 'data'));
+	// si en éste punto no muestra errores, todo bien =D
+
 	//creo el objeto active	
 	$ac= new active();
 	//array con los campos a seleccionar
@@ -35,4 +39,13 @@
 	foreach ($user as $key => $value) {
 		var_dump($value);
 	}
+
+	echo '<hr>';
+	
+	//actualizar datos de la BD--------------------------
+	$array=array('id'=>'1');
+	$ac->where($array);
+	$array=array('descripcion'=>'curso uno');
+	$ac->set($array);
+	$ac->edit('cursos');
 ?>
