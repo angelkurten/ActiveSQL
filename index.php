@@ -1,5 +1,5 @@
 <?php
-	
+
 	require_once('core/lib.php');
 
 	$libs=array('core/active.php');
@@ -7,8 +7,8 @@
 
 	$ac=new active;
 	echo '<hr>';
-	
-
+	ini_set('memory_limit', '-1');
+	//UTILIZANDO ACTIVEPHP
 	//iniciar el tiempo de ejecion
 	$time_start = microtime_float();
 		//consultar datos de la BD-------------------------
@@ -19,40 +19,41 @@
 		//recupero los datos de la RAM, ejecuto la consulta y 
 		//limpio la RAM
 		$user=$ac->get('usuarios');
-		//muestro los datos en pantalla
-		foreach ($user as $key => $value) {
-			var_dump($value);
-		}
-
 	//finalizar el tiempo de ejecucion
 	$time_end = microtime_float();
 	//medir el tiempo de ejecucion
 	$time_total = $time_end - $time_start;
 	//mostrar el tiempo de ejecuion
-	echo "El codigo se ha ejecutado en $time_total segundos";
+	echo "Se han consultado ".count($user)." registros en $time_total segundos";
+	echo "<br>";
+	//muestro los datos en pantalla
+	/*for ($i=0; $i < 10; $i++) { 
+		var_dump($user[$i]);
+	}
+*/
 
 	echo '<hr>';
 	
 	//actualizar datos de la BD--------------------------
 	//array con el filtro
-	$array=array('id'=>'1');
+	//$array=array('id'=>'1');
 	//envio a la RAM los campos a filtrar
-	$ac->where($array);
+	//$ac->where($array);
 	//array con los datos a actualizar
-	$array=array('apellido'=>'Kurten');
+	//$array=array('apellido'=>'Kurten');
 	//envio a la RAM los datos a actualizar
-	$ac->set($array);
+	//$ac->set($array);
 	//ejecuto la consulta
-	$ac->edit('usuarios');
+	//$ac->edit('usuarios');
 
-	echo '<hr>';
+	//echo '<hr>';
 	//guardar datos de la BD--------------------------
 	//array con los datos a guardar
-	$array=array('0',"Angel", 'Kurten', 'angelkurten@hotmail.com');
+	//$array=array('0',"Angel", 'Kurten', 'angelkurten@hotmail.com');
 	//envio a la RAM los datos a guardar
-	$ac->values($array);
+	//$ac->values($array);
 	//ejecuto la consulta
-	$ac->save('usuarios');
+	//$ac->save('usuarios');
 
 	//eliminar datos de la BD--------------------------
 	/*$array=array('id'=>'1');
