@@ -12,9 +12,9 @@
 	//iniciar el tiempo de ejecion
 	$time_start = microtime_float();
 		//consultar datos de la BD-------------------------
-		$array=array('id'=>'1');
+		//$array=array('id'=>'1');
 		//envio a la RAM los campos a filtrar
-		$ac->where($array);
+		//$ac->limit('1',5);
 		//array con los campos a seleccionar
 		$array= array("nombre", 'email');
 		//envio a la RAM los campos a seleccionar

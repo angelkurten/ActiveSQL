@@ -10,6 +10,8 @@
 		private $set='';
 		//variable para los values del INSERT
 		private $values='';
+		//variable para limitar una consulta
+		private $limit='';
 		
 		public function __construct()
 		{
@@ -34,9 +36,11 @@
 				{
 					$this->query.=' WHERE '.$this->where;
 				}
-				else
+
+				//limitar la consulta
+				if($this->limit!='')
 				{
-					$this->query.=';';
+					$this->query.= $this->limit;
 				}
 
 				//ejecutar consulta
@@ -176,14 +180,31 @@
 			$this->where=$sqldf;
 		}
 
+		//funcion para limitar resultados de una consulta
+		public function limit($init, $end=NULL)
+		{
+			try {
+				if ((is_int($init)) and ($init>-1)) {
+					$this->limit=' LIMIT '.$init;
+					if(($end!=NULL) and (is_int($end)) and ($end > -1))
+					{
+						$this->limit.=', '.$end;
+					}
+				}
+			} catch (Exception $e) {
+				
+			}	
+		}
+
 		//funcion para liberar memoria
 		public function liberar()
 		{
-			echo $this->where="";
-			echo $this->select="";
-			echo $this->set="";
-			echo $this->values="";
-			echo $this->mensaje="";
+			$this->where="";
+			$this->select="";
+			$this->set="";
+			$this->values="";
+			$this->mensaje="";
+			$this->limit="";
 			$this->rows=array();
 		}
 	}
