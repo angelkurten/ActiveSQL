@@ -12,8 +12,11 @@
 	//iniciar el tiempo de ejecion
 	$time_start = microtime_float();
 		//consultar datos de la BD-------------------------
+		$array=array('id'=>'1');
+		//envio a la RAM los campos a filtrar
+		$ac->where($array);
 		//array con los campos a seleccionar
-		$array= array('nombre', 'email');
+		$array= array("nombre", 'email');
 		//envio a la RAM los campos a seleccionar
 		$ac->select($array);
 		//recupero los datos de la RAM, ejecuto la consulta y 
@@ -49,11 +52,11 @@
 	//echo '<hr>';
 	//guardar datos de la BD--------------------------
 	//array con los datos a guardar
-	//$array=array('0',"Angel", 'Kurten', 'angelkurten@hotmail.com');
+	$array=array('0',"Prueba", 'Kurten', 'angelkurten@hotmail.com');
 	//envio a la RAM los datos a guardar
-	//$ac->values($array);
+	$ac->values($array);
 	//ejecuto la consulta
-	//$ac->save('usuarios');
+	$ac->save('usuarios');
 
 	//eliminar datos de la BD--------------------------
 	/*$array=array('id'=>'1');

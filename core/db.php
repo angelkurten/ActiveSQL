@@ -8,6 +8,7 @@
 		private static $db_user='root';
 		private static $db_pass='';
 		private static $set_charset='utf8';
+		private static $driver='mysql';
 		protected $db_name='active';
 		protected $query;
 		protected $rows=array();
@@ -23,20 +24,18 @@
 
 		//metodo para conectar con la base de datos
 		private function open_connection(){
-			$this->conn= new mysqli(self::$db_host, self::$db_user,
-									self::$db_pass, $this->db_name);
-
-			if ($this->conn->connect_error) {
-			    die('Error de Conexión (' . $this->conn->connect_errno . ') '
-			            . $this->conn->connect_error);
-			}
 			/* cambiar el conjunto de caracteres a utf8 */
-			$this->conn->set_charset(self::$set_charset);
+			//$this->conn->set_charset(self::$set_charset);
+			try {
+			    $this->conn = new PDO(self::$driver.':host='.self::$db_host.';dbname='.$this->db_name, self::$db_user, self::$db_pass);
+			} catch (Exception $e) {
+			  die("No se pudo conectar: " . $e->getMessage());
+			}
 		}
 
 		//metodo para desconectarme de la base de datos
 		private function close_connection(){
-			$this->conn->close();
+			$this->conn=null;
 		}
 
 		//ejecutar una query de tipo INSERT;DELETE;UPDATE
@@ -44,9 +43,10 @@
 		{
 			//abrir conexion
 			$this->open_connection();
-			//realizar consulta
-			$result=$this->conn->query($this->query);
-			//var_dump($this->query);
+			//preparar la consulta
+			$result=$this->conn->prepare($this->query);
+			//ejecutar la consulta
+			$result->execute();
 			//cerrar conexion
 			$this->close_connection();
 		}
@@ -56,13 +56,12 @@
 		{
 			//abro la conexion
 			$this->open_connection();
-			//realizar la consulta
-			$result=$this->conn->query($this->query);
-			//var_dump($this->query);
+			//preparar la consulta
+			$result=$this->conn->prepare($this->query);
+			//ejecutar la consulta
+			$result->execute();
 			//crear el array con los resultados
-			while($this->rows[]=$result->fetch_assoc());
-			//libero menomoeria
-			$result->close();
+			while($this->rows[]=$result->fetch());
 			//cierro la conexion
 			$this->close_connection();
 			//elimino e ultimo valor del vector
