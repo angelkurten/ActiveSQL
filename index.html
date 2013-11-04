@@ -39,9 +39,17 @@
     <h1 class="font-bree-serif">ActiveSQL</h1>
     <p class="font-open-sans-normal">Realiza consultas SQL de una forma sencilla y rapida con PHP.</p>
     
-    <p class="jumbo"> <a href="#" class="btn btn-inverse btn-large font-open-sans-normal"><strong>View Plugin on GitHub</strong></a> <a href="#" class="btn btn-success btn-large font-open-sans-normal"><strong>Download Plugin </strong><small>(v1.0.0)</small></a> </p>
+    <p class="jumbo"> 
+      <a href="https://github.com/angelkurten/ActiveSQL/tree/master" target="_BLANK" class="btn btn-inverse btn-large font-open-sans-normal">
+        <strong>Ver en GitHub</strong>
+      </a> 
+      <a href="https://github.com/angelkurten/ActiveSQL/archive/master.zip" target="_BLANK" class="btn btn-success btn-large font-open-sans-normal">
+        <strong>Descargar</strong>
+        <small>(v1.0.0)</small>
+      </a> 
+    </p>
     
-    <p class="share"> <a href="https://twitter.com/intent/tweet?screen_name=madebyraj" class="twitter-mention-button" data-related="madebyraj">Tweet to @madebyraj</a>
+    <p class="share"> <a href="https://twitter.com/intent/tweet?screen_name=angelkurten" class="twitter-mention-button" data-related="angelkurten">Tweet to @angelkurten</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="madebyraj">Tweet</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -54,13 +62,13 @@
     <div class="span12">
       <div class="tabbable">
         <ul class="nav nav-tabs" id="pluginTab">
-          <li class="active"><a href="#overview">Overview</a></li>
-          <li><a href="#examples">Examples</a></li>
-          <li><a href="#howtouse">How To Use</a></li>
-          <li><a href="#documentation">Documentation</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#roadmap">Roadmap and changelog</a></li>
-          <li><a href="#" class="tip" title="Link to your Github account">Submit Issues</a></li>
+          <li class="active"><a href="#overview">Sobre ActiveSQL</a></li>
+          <li><a href="#examples">Ejemplos</a></li>
+          <li><a href="#howtouse">Como usarlo</a></li>
+          <li><a href="#documentation">Documentacion</a></li>
+          <li><a href="#faq">FAQ Archivos</a></li>
+          <li><a href="#roadmap">Mapa de cambios</a></li>
+          <!-- <li><a href="#" class="tip" title="Link to your Github account">Submit Issues</a></li> -->
         </ul>
         <div class="tab-content">
         <!-- 
@@ -69,45 +77,45 @@
           =====================================
           -->
           <div class="tab-pane active" id="overview">
-            <h1 class="font-bree-serif align-center">Designed for designers &amp; developers</h1>
-            <h4 class="align-center font-open-sans-normal-italic">Need reasons to use this plugin? Check the features below.</h4>
+            <h1 class="font-bree-serif align-center">Desarolladores</h1>
+            <h4 class="align-center font-open-sans-normal-italic">Quieres razones para utilizar ActiveSQL?</h4>
             <div class="row features">
-              <div class="span4"> <i class="feature-icon icon-th"></i>
-                <h3>12 Column Grid</h3>
-                <p>Montes faucibus viverra enim egestas nibh placerat pellentesque dignissim vehicula amet eget nascetur lacus sed, nam nonummy diam, hendrerit.</p>
+              <div class="span4"> <i class="feature-icon icon-resize-full"></i>
+                <h3>Olvidate del SQL</h3>
+                <p>Si utilizas ActiveSQL te olvidaras de escribir esas que son algunas veces tediosas lineas de codigo en SQL e incluso puedes tender a escribirlas mal, nosotros lo hacemos por ti :D</p>
               </div>
               <!--end span4-->
               <div class="span4"> <i class="feature-icon icon-resize-full"></i>
-                <h3>Responsive</h3>
-                <p>Montes faucibus viverra enim egestas nibh placerat pellentesque dignissim vehicula amet eget nascetur lacus sed, nam nonummy diam, hendrerit.</p>
+                <h3>Facil integracion</h3>
+                <p>Integrar ActiveSQL en tu proyecto es muy facil, solo tienes que requerir y/o incluir un archivo en tu proyecto y estas listo :D</p>
               </div>
               <!--end span4-->
-              <div class="span4"> <i class="feature-icon icon-twitter"></i>
-                <h3>Made With Bootstrap</h3>
-                <p>Montes faucibus viverra enim egestas nibh placerat pellentesque dignissim vehicula amet eget nascetur lacus sed, nam nonummy diam, hendrerit.</p>
+              <div class="span4"> <i class="feature-icon icon-resize-full"></i>
+                <h3>Olvidate del trabajo duro</h3>
+                <p>ActiveSQL hace todo el trabajo duro por ti, se encarga de crear, ejecutar y cerrar la conexionc con la base de datos de forma automatica :D</p>
               </div>
               <!--end span4-->
             </div>
             <!--end row-->
             <div class="row features">
-              <div class="span4"> <i class="feature-icon icon-list-ol"></i>
-                <h3>Google Code Prettify</h3>
-                <p>Montes faucibus viverra enim egestas nibh placerat pellentesque dignissim vehicula amet eget nascetur lacus sed, nam nonummy diam, hendrerit.</p>
+              <div class="span4"> <i class="feature-icon icon-resize-full"></i>
+                <h3>Seguridad al instante</h3>
+                <p>Al utilizar esta libreria automaticamente todos las parametros de tus consultas seran examinados en busca de Inyecciones SQL, en caso de encontrar algo ActiveSQL se encargara de purificar dicha consulta :D</p>
               </div>
               <!--end span4-->
-              <div class="span4"> <i class="feature-icon icon-font"></i>
-                <h3>Google Web Font</h3>
-                <p>Montes faucibus viverra enim egestas nibh placerat pellentesque dignissim vehicula amet eget nascetur lacus sed, nam nonummy diam, hendrerit.</p>
+              <div class="span4"> <i class="feature-icon icon-resize-full"></i>
+                <h3>POO</h3>
+                <p>ActiveSQL esta escrito utilizando el paradigma Programacion Orienta a Objetos(POO), es por eso que todo su codigo es facil de entender y extender, para su utilizacion solo tienes que crear un objeto y listo :D.</p>
               </div>
               <!--end span4-->
-              <div class="span4"> <i class="feature-icon icon-flag"></i>
-                <h3>Font Awesome Icons</h3>
-                <p>Montes faucibus viverra enim egestas nibh placerat pellentesque dignissim vehicula amet eget nascetur lacus sed, nam nonummy diam, hendrerit.</p>
+              <div class="span4"> <i class="feature-icon icon-resize-full"></i>
+                <h3>ActiveSQL es Libre</h3>
+                <p>Si señor@s, puedes sentirte en la libertad de modificar y distribuir esta libreria siempre y cuando no te olvides de notificar quien es el autor original de la libreria :D</p>
               </div>
               <!--end span4-->
             </div>
             <!--end row-->
-            <hr class="soften" />
+            <!-- <hr class="soften" />
             <h1 class="font-bree-serif align-center">Showcase</h1>
             <h4 class="align-center font-open-sans-normal-italic">Websites using this plugin. Check Out</h4>
             <ul class="thumbnails">
@@ -115,7 +123,7 @@
               <li class="span3"> <a href="#" class="thumbnail"> <img src="http://placehold.it/260x180" alt="" /> </a> </li>
               <li class="span3"> <a href="#" class="thumbnail"> <img src="http://placehold.it/260x180" alt="" /> </a> </li>
               <li class="span3"> <a href="#" class="thumbnail"> <img src="http://placehold.it/260x180" alt="" /> </a> </li>
-            </ul>
+            </ul> -->
             <!--end thumbnails-->
           </div>
           <!--end overview-content-->
@@ -125,43 +133,66 @@
           =====================================
           -->
           <div class="tab-pane" id="examples">
-          <h2 class="font-bree-serif">Example Heading</h2>
-            <p>Some Description about the example if needed</p>
+          <h2 class="font-bree-serif">Ejemplos Basicos</h2>
+            <p>Estos son ejemplos 4 ejemplos basicos de como usar ActiveSQL</p>
+            <p>NOTA: La variable $ac es el objeto que contiene todas los metodos de ActiveSQL</p>
             <div class="row">
              <div class="span6">
-                <ul class="thumbnails">
+                <!-- <ul class="thumbnails">
                   <li class="span4"> <a href="#" class="thumbnail"> <img src="http://placehold.it/360x268" alt="" /> </a> </li>
                   <li class="span2"> <a href="#" class="thumbnail"> <img src="http://placehold.it/160x120" alt="" /> </a> </li>
                   <li class="span2"> <a href="#" class="thumbnail"> <img src="http://placehold.it/160x120" alt="" /> </a> </li>
                   <li class="span2"> <a href="#" class="thumbnail"> <img src="http://placehold.it/160x120" alt="" /> </a> </li>
                   <li class="span2"> <a href="#" class="thumbnail"> <img src="http://placehold.it/160x120" alt="" /> </a> </li>
                   <li class="span2"> <a href="#" class="thumbnail"> <img src="http://placehold.it/160x120" alt="" /> </a> </li>
-                </ul>
+                </ul>--> 
+                <section class="sec-header">
+                  <h3 class="font-bree-serif">SELECT</h3>
+                  <pre class="prettyprint linenums">
+//array con los campos a seleccionar
+$array= array('nombre', 'email');
+//envio los campos a seleccionar
+$ac->select($array);
+//construyo y ejecuto la consulta
+$user=$ac->get('usuarios');
+</pre>
+                </section>
+            <section class="sec-header">
+                  <h3 class="font-bree-serif">UPDATE</h3>
+            <pre class="prettyprint linenums">
+//array con el filtro where
+$array=array('id'=>'1');
+//guardo los campos a filtrar
+$ac->where($array);
+//array con los datos a actualizar
+$array=array('nombre'=>'Angel','apellido'=>'Kurten');
+//guardo los campos a actualizar
+$ac->set($array);
+//construyo y ejecuto la consulta
+//$ac->edit('usuarios');
+</pre>
+              </section>        
               </div>
               <!--end span6-->
               <div class="span6">
-              	<section class="sec-header">
-                <h3 class="font-bree-serif">The Markup</h3>
-<pre class="prettyprint linenums">&lt;ul class="thumbnails"&gt;
-&lt;li class="span4"&gt; &lt;a href="#" class="thumbnail"&gt; &lt;img src="http://placehold.it/360x268" alt=""&gt; &lt;/a&gt; &lt;/li&gt;
-....
-&lt;/ul&gt;
+                <section class="sec-header">
+                  <h3 class="font-bree-serif">INSERT</h3>
+                  <pre class="prettyprint linenums">
+//array con los datos a guardar
+$array=array('0',"Angel", 'Kurten', 'angelkurten@hotmail.com');
+//guardo los campos a guardar
+$ac->values($array);
+//construyo y ejecuto la consulta
+$ac->save('usuarios');
 </pre>
-			</section>
+  			        </section>
             <section class="sec-header">
-			<h3 class="font-bree-serif">CSS</h3>
-<pre class="prettyprint linenums">
-thumbnails {
-  margin-left: -20px;
-  list-style: none;
-  *zoom: 1;
-}
-.thumbnails > li {
-  float: left;
-  margin-bottom: 18px;
-  margin-left: 20px;
-}
-...
+            			<h3 class="font-bree-serif">DELETE</h3>
+            <pre class="prettyprint linenums">
+//array con el filtro where
+$array=array('id'=>'1');
+//ejecuto la consulta
+$ac->delete('usuarios');
 </pre>
               </section>
               </div><!--end span6-->             
@@ -174,37 +205,37 @@ thumbnails {
           -->
           <div class="tab-pane" id="howtouse">
                     	<section class="sec-header">
-                <h3 class="font-bree-serif">Link Css</h3>
-                <p>Move the <strong>plugin CSS</strong> file to your server and link to it in the <code><abbr title="<head>">head</abbr></code> section of your document.</p>
-				<pre class="prettyprint linenums">&lt;link rel="stylesheet" href="yourplugin.css" /&gt;</pre>
+                <h3 class="font-bree-serif">PASO 1: Descargar</h3>
+                <p>Descargar <strong>ActiveSQL </strong><a href="https://github.com/angelkurten/ActiveSQL/archive/master.zip" target="_BLANK" class="font-open-sans-normal">Click aqui</a>.</p>
 			</section>
             <section class="sec-header">
-                <h3 class="font-bree-serif">Link JS</h3>
-                <p>Move the <strong>plugin JS</strong> file to your server and link to it before the closing <code><abbr title="<body>">body</abbr></code> tag.</p>
-                <p>Please note that you must include jQuery (v1.7 or later) before the slider JS file.</p>
+                <h3 class="font-bree-serif">PASO 2: Incluir e Integrar</h3>
+                <p>Incluye el archivo <code><abbr title="core/archive.php">active.php</abbr></code> y crea un <strong>objeto</strong> para que puedas empezar a trabajar.</p>
+                <p>NOTA 1: En este caso utilizaremos el metodo require_once de PHP estas en la libertad de utilizar otro</p>
+                <p>NOTA 2: Para este ejemplo utilizaremos $ac como variable para crear el objeto puedes utilizar el nombre que desees</p>
 				<pre class="prettyprint linenums">
-&lt;script src="jquery-1.7.1.min.js"&gt;&lt;/script&gt;
-&lt;script src="jquery.yourplugin.min.js"&gt;&lt;/script&gt;
+//requerimos el archivo active.php
+require_once('core/active.php');
+creamos el objeto $ac con todos los metodos de ActiveSQL
+$ac=new active;
 </pre>
 			</section>
             <section class="sec-header">
-                <h3 class="font-bree-serif">The Markup</h3>
-                <p>Add the following markup</p>
-                <pre class="prettyprint linenums">&lt;ul class="thumbnails"&gt;
-&lt;li class="span4"&gt; &lt;a href="#" class="thumbnail"&gt; &lt;img src="http://placehold.it/360x268" alt=""&gt; &lt;/a&gt; &lt;/li&gt;
-....
-&lt;/ul&gt;
-</pre>
-</section>
-<section class="sec-header">
-                <h3 class="font-bree-serif">Call Plugin</h3>
-                <p>Just before the closing <code><abbr title="<body>">body</abbr></code> tag (after any JS file includes), call the plugin with code below:</p>
+                <h3 class="font-bree-serif">Paso 3: Utilizar</h3>
+                <p>Aqui es donde empieza la magia</p>
+                <p>
+                  Si ya descargaste ActiveSQL, crea una base de datos llamada <code><abbr title="active">active</abbr></code>, importa el archivo <code><abbr title="database.sql">database.sql</abbr></code> que viene con el paquete descargado y edita el archivo <code><abbr title="index.php">index.php</abbr></code> agregando las siguientes lineas de codigo.
+                </p>
                 <pre class="prettyprint linenums">
-&lt;script&gt;
-$(document).ready(function () {
-	$('.selector').yourPlugin();
-});
-&lt;/script&gt;
+//borrar todos los datos de la tabla usuarios
+$ac->delete('usuarios');
+//crear un nuevo usuario
+//array con los datos a guardar
+$array=array('0',"Angel", 'Kurten', 'angelkurten@hotmail.com');
+//guardo los campos a guardar
+$ac->values($array);
+//construyo y ejecuto la consulta
+$ac->save('usuarios');
 </pre>
 </section>
           </div><!--end howtouse-content-->
@@ -215,46 +246,68 @@ $(document).ready(function () {
           -->
           <div class="tab-pane" id="documentation">
              <section class="sec-header">
-                <h3 class="font-bree-serif">Plugin Settings</h3>
-                <p>Plugin accepts settings from an object of key/value pairs, and can be assigned to any HTML element.</p>
+                <h3 class="font-bree-serif">Metodos del objeto y sus parametros</h3>
+                <p>Aqui esta toda la documentacion posible de los metodos disponibles en ActiveSQl con los parametros que acepta.</p>
                 <table class="table table-bordered settings">
                 <thead>
                 <tr>
-                	<th><strong>Property</strong></th>
-                    <th><strong>Default</strong></th>
-                    <th><strong>Description</strong></th>
+                	<th><strong>Metodo</strong></th>
+                    <th><strong>Tipo parametro(# de parametros)</strong></th>
+                    <th><strong>Descripcion</strong></th>
                 </tr>
                 </thead>
                 <tbody>
                 	<tr>
-                        <td>Property1</td>
-                        <td>Default Value</td>
-                        <td>some description about this</td>
+                        <td>get('nombre tabla');</td>
+                        <td>string(1)</td>
+                        <td>Metodo para realizar consultar registros a la base de datos</td>
                     </tr>
                     <tr>
-                        <td>Property2</td>
-                        <td>"Default String"</td>
-                        <td>some description about this</td>
+                        <td>save('nombre tabla')</td>
+                        <td>string(1)</td>
+                        <td>Metodo para guardar registros en la base de datos</td>
                     </tr>
                     <tr>
-                        <td>Property3</td>
-                        <td>false</td>
-                        <td>some description about this</td>
+                        <td>edit('nombre tabla')</td>
+                        <td>string(1)</td>
+                        <td>Metodo para editar registros en la base de datos</td>
                     </tr>
                     <tr>
-                        <td>Property4</td>
-                        <td>Default Value</td>
-                        <td>some description about this</td>
+                        <td>delete('nombre tabla')</td>
+                        <td>string</td>
+                        <td>Metodo para eliminar registros en la base de datos</td>
+                    </tr>
+                </tbody>
+                </table>
+                <p>Metodos complementarios, solo que no funcionan si no realizamos una de las acciones anteriores</p>
+                <table class="table table-bordered settings">
+                <thead>
+                <tr>
+                  <th><strong>Metodo</strong></th>
+                    <th><strong>Tipo parametro(# de parametros)</strong></th>
+                    <th><strong>Descripcion</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>set()</td>
+                        <td>array(1)</td>
+                        <td>Metodo que complementa la funcion edit, al cual se envia un array que contiene los nombres y el valor de los campos a actualizar</td>
                     </tr>
                     <tr>
-                        <td>Property5</td>
-                        <td>"Default String"</td>
-                        <td>some description about this</td>
+                        <td>select()</td>
+                        <td>array(1)</td>
+                        <td>Metodo que nos permite seleccionar campos en especifico de una tabla</td>
                     </tr>
                     <tr>
-                        <td>Property6</td>
-                        <td>false</td>
-                        <td>some description about this</td>
+                        <td>values()</td>
+                        <td>array(1)</td>
+                        <td>Metodo que complementa la funcion insert, que nos definir valores para campos en una tabla</td>
+                    </tr>
+                    <tr>
+                        <td>where()</td>
+                        <td>array(1)</td>
+                        <td>Metodo que nos permite aplicar filtros a nuestas consultas</td>
                     </tr>
                 </tbody>
                 </table>
@@ -268,58 +321,98 @@ $(document).ready(function () {
           -->
           <div class="tab-pane" id="faq">
           <section class="sec-header">
-              <h3 class="font-bree-serif">FAQ <small>Option1</small></h3>
+              <h3 class="font-bree-serif">FAQ <small>Archivos</small></h3>
               <div class="row">
               <div class="span3">
               <div class="well">
              	<ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a href="#">Category 1</a></li>
-                  <li><a href="#">Category 2</a></li>
-                  <li><a href="#">Category 3</a></li>
-                  <li><a href="#">Category 4</a></li>
-                  <li><a href="#">Category 5</a></li>
+                  <li><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#4">index.php</a></li>
+                  <li><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#5">test.php</a></li>
+                  <li><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#6">database.sql</a></li>
+                  <li>
+                    <p>Carpeta Core</p>
+                    <ul class="nav nav-pills nav-stacked">
+                      <li><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#1">active.php</a></li>
+                      <li><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#2">db.php</a></li>
+                      <li><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#3">lib.php</a></li>
+                    </ul>
+                  </li>
                 </ul>
                 </div><!--end well-->
               </div><!--end span3-->
               <div class="span9">
               <form class="well form-search" />
-              <input type="text" class="span7" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="[&quot;keyword1&quot;,&quot;keyword2&quot;]" />
-              <button type="submit" class="btn btn-success">Search</button>
-              </form>
                   <div class="accordion" id="faq-accordion">             
                     <div class="accordion-group">
                       <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                          Question #1
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#1">
+                          active.php
                         </a>
                       </div>
-                      <div id="collapseOne" class="accordion-body collapse in">
+                      <div id="1" class="accordion-body collapse">
                         <div class="accordion-inner">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          Este archivo contiene todas una clase con el mismo nombre, y dentro de ella tiene todos los metodos publicos que nos permite
+                          realizar acciones detro de nuestra base de datos...
                         </div>
                       </div>
                     </div>
                     <div class="accordion-group">
                       <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                          Question Item #2
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#2">
+                          db.php
                         </a>
                       </div>
-                      <div id="collapseTwo" class="accordion-body collapse">
+                      <div id="2" class="accordion-body collapse">
                         <div class="accordion-inner">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          Este archivo es el corazon de la aplicacion, es el encargado de definir los metodos que utiliza active.php, y de realizar la parte pesada del trabajo, como conectarnos con la base de datos, ejectutar la consulta, devolver valores consultados, y cerrar la conexion.
                         </div>
                       </div>
                     </div>
                     <div class="accordion-group">
                       <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                          Question Item #3
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#3">
+                          lib.php
                         </a>
                       </div>
-                      <div id="collapseThree" class="accordion-body collapse">
+                      <div id="3" class="accordion-body collapse">
                         <div class="accordion-inner">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                         Este archivo es un extra de la liberia, el cual contiene varias funciones para medir el tiempo en el que se ejecutan las consultas, para realizar inclusiones de archivos de una forma mas comoda y sencila, ademas de una funcion para mostrar los errores de PHP de una forma diferente.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#3">
+                          index.php
+                        </a>
+                      </div>
+                      <div id="3" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                         Archivo en el cual hay varios ejemplos de como usar ActiveSQL, en la primera implementacion te muestra el tiempo que tardo en ejecutarse esto lo puedes comparar con el resultado de test.php el cual realiza la misma operacion pero de la forma tradicional
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#3">
+                          test.php
+                        </a>
+                      </div>
+                      <div id="3" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                          Realiza la primera operacion de seleccion de datos realizada en el index.php y su tiempo de ejecucion para lo compares con el del index.php
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#3">
+                          database.sql
+                        </a>
+                      </div>
+                      <div id="3" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                         Este archivo contiene una tabla de usuarios con unos datos de prueba los cuales debes importar en una base de datos llamada active
                         </div>
                       </div>
                     </div>
@@ -327,48 +420,6 @@ $(document).ready(function () {
               </div><!--end span9-->
               </div><!--end row-->
             </section>  
-            
-              <section class="sec-header">
-              <h3 class="font-bree-serif">FAQ <small>Option2</small></h3>
-                  <div class="accordion" id="faq-accordion1">             
-                    <div class="accordion-group">
-                      <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-                          Question #1
-                        </a>
-                      </div>
-                      <div id="collapse1" class="accordion-body collapse in">
-                        <div class="accordion-inner">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-group">
-                      <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
-                          Question Item #2
-                        </a>
-                      </div>
-                      <div id="collapse2" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-group">
-                      <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-                          Question Item #3
-                        </a>
-                      </div>
-                      <div id="collapse3" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                      </div>
-                    </div>
-                  </div><!--end accordion-->
-            </section>
           </div><!--end faq-content-->
            <!-- 
           =====================================
@@ -377,8 +428,8 @@ $(document).ready(function () {
           -->
           <div class="tab-pane" id="roadmap">
             <section class="sec-header">
-              <h3 class="font-bree-serif">Roadmap</h3>
-              <p>For more up-to-date information on release dates for these versions, please refer to the <a href="#" class="tip" title="Link to your Github Account">Issues Milestones</a>.</p>
+              <h3 class="font-bree-serif">Mapa de cambios</h3>
+              <p>Aqui encontraras todos los cambios que ha tenido ActiveSQL, en cada version</p>
               <table class="table table-bordered">
                   <thead>
                       <tr>
@@ -388,27 +439,15 @@ $(document).ready(function () {
                   </thead>
                   <tbody>
                   <tr>
-                      <td>1.0.3</td>
-                      <td>Description about this version goes here</td>                  
-                  </tr>
-                  <tr>
-                      <td>1.0.2</td>
-                      <td>Description about this version goes here</td>                  
-                  </tr>
-                  <tr>
-                      <td>1.0.1</td>
-                      <td>Description about this version goes here</td>                  
-                  </tr>
-                  <tr>
                       <td>1.0.0</td>
-                      <td>Description about this version goes here</td>                  
+                      <td>Implementacion base de ActiveSQL con SELECT, UPDATE, INSERT</td>                  
                   </tr>
                   
                   </tbody>
               </table>
             </section>
             
-            <section class="sec-header">
+            <!-- <section class="sec-header">
               <h3 class="font-bree-serif">Changelog</h3>              
               <div class="accordion" id="changelog-accordion">             
                     <div class="accordion-group">
@@ -436,64 +475,14 @@ $(document).ready(function () {
                         </div>
                       </div>
                     </div>
-                    <div class="accordion-group">
-                      <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseab">
-                          <strong>1.0.2 (April 1, 2012)</strong>
-                        </a>
-                      </div>
-                      <div id="collapseab" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                           <h5>HTML Changes</h5>
-                              <ul>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                              </ul>
-                              <h5>Javascript Changes</h5>
-                              <ul>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                              </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-group">
-                      <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseac">
-                          <strong>1.0.1 (March 1, 2012)</strong>
-                        </a>
-                      </div>
-                      <div id="collapseac" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                           <h5>HTML Changes</h5>
-                              <ul>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                              </ul>
-                              <h5>Javascript Changes</h5>
-                              <ul>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                                  <li>Some description about the changes</li>
-                              </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!--end accordion-->
-            </section>
+                  </div>
+            </section> -->
           </div><!--end roadmap-content-->
           </div><!--end tab-content-->
       </div><!--end tabbable-->
       
       <div class="well align-center">
-        	<h4>For any queries or issues. <a href="#">Submit issues</a> on github or Contact me <a href="mailto:">plugin-support@gmail.com</a></h4>
+        	<h4>Si quieres hacer parte del equipo de desarrollo de ActiveSQL envia un email a: <a href="mailto:angelkurten@hotmail.com">angelkurten@hotmail.com</a></h4>
       </div><!--end well-->
     </div><!--end span12-->
   </div><!--end row-->
@@ -503,10 +492,10 @@ $(document).ready(function () {
       <div class="container">
       <div class="row">
           <div class="span6">
-            <p>&copy; Plugin-Documentation Theme. All Rights Reserved</p>
+            <p>ActiveSQL es apoyador por la <a target="_BLANK" href="https://www.facebook.com/Girucode">Fundacion Girucode</a></p>
           </div>
           <div class="span2 offset4">
-          <p><a href="#" id="top">Go To Top</a></p>
+          <p><a href="#" id="top">ir arriba</a></p>
           </div><!--end span2-->
       </div><!--end row-->  
       </div><!--end container-->  
