@@ -35,7 +35,7 @@
 				if ($this->select != '') {
 					$this->query = 'SELECT ' . $this->select . ' FROM ' . $table;
 				}
-
+				
 				//completar consulta con o sin filtro where
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
@@ -48,7 +48,6 @@
 
 				//ejecutar consulta
 				$this->getQuery();
-
 				$result = $this->rows;
 			}
 			
@@ -65,18 +64,15 @@
 			$result = $this->mensaje;
 			
 			if (!$result) {
-				
 				$this->query = 'INSERT INTO ' . $table . ' VALUES ' . $this->values . ';';
 				
 				//ejecutar consulta
 				$this->executeQuery();
-
 				$result = $this->rows;
 			}
 		
 			//liberar la memoria
 			$this->liberar();
-			
 			return $result;
 		}
 
@@ -95,7 +91,6 @@
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
 				}
-
 				$result = $this->executeQuery();
 			}
 			
@@ -112,9 +107,8 @@
 				$this->query = 'DELETE FROM '.$table;
 				
 				if ($this->where != '') {
-					$this->query .= ' WHERE '.$this->where;
+					$this->query .= ' WHERE ' . $this->where;
 				}
-
 				$this->executeQuery();
 			}
 			$this->liberar();
@@ -143,14 +137,13 @@
 		//funcion para seleccionar campos de una tabla
 		public function select(array $array)
 		{
-			$values = implode(" , ", $array);
+			$values = implode(' , ', $array);
 			$this->select = $values;
 		}
 
 		//funcion para seleccionar los values
 		public function values(array $array)
 		{
-
 			$values = array_values($array);
 			
 			//crear un array definitivo con los arrays anteriores
@@ -158,8 +151,7 @@
 				$sql[$i] = "'" . addslashes($values[$i]) . "'";
 			}
 
-			$values = "(" . implode(" , ", $sql) . ")";
-
+			$values = '(' . implode(' , ', $sql) . ')';
 			$this->values = $values;
 		}
 
@@ -178,10 +170,10 @@
 			}
 			
 			//creo el sql definitivo
-			$sqldf = implode(" and ", $sql);
-
+			$sqldf = implode(' and ', $sql);
 			$this->where = $sqldf;
 		}
+
 
 		//funcion para limitar resultados de una consulta
 		public function limit($init, $end = NULL)
