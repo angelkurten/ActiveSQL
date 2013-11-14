@@ -5,17 +5,17 @@
 	abstract class db
 	{
 		//variables de conexion
-		private static $db_host='localhost';
-		private static $db_user='root';
-		private static $db_pass='';
-		private static $set_charset='utf8';
-		private static $driver='mysql';
-		protected $db_name='active';
+		private static $db_host = 'localhost';
+		private static $db_user = 'root';
+		private static $db_pass = '';
+		private static $set_charset = 'utf8';
+		private static $driver = 'mysql';
+		protected $db_name = 'active';
 
 		protected $query;
-		protected $rows=array();
+		protected $rows = array();
 		private $conn;
-		public $mensaje='';
+		public $mensaje = '';
 		
 
 		//metodos abstractos para el CRUD
@@ -29,15 +29,16 @@
 			/* cambiar el conjunto de caracteres a utf8 */
 			//$this->conn->set_charset(self::$set_charset);
 			try {
-			    $this->conn = new PDO(self::$driver.':host='.self::$db_host.';dbname='.$this->db_name, self::$db_user, self::$db_pass);
+			    $this->conn = new PDO(self::$driver . ':host = ' . self::$db_host . ';dbname = ' . $this->db_name, self::$db_user, self::$db_pass);
 			} catch (Exception $e) {
-			  die("No se pudo conectar: " . $e->getMessage());
+			  die('No se pudo conectar: ' . $e->getMessage());
 			}
 		}
 
 		//metodo para desconectarme de la base de datos
-		private function close_connection(){
-			$this->conn=null;
+		private function close_connection()
+		{
+			$this->conn = null;
 		}
 
 		//ejecutar una query de tipo INSERT;DELETE;UPDATE
@@ -45,10 +46,13 @@
 		{
 			//abrir conexion
 			$this->open_connection();
+			
 			//preparar la consulta
 			$result=$this->conn->prepare($this->query);
+			
 			//ejecutar la consulta
 			$result->execute();
+			
 			//cerrar conexion
 			$this->close_connection();
 		}
@@ -58,13 +62,14 @@
 		{
 			//abro la conexion
 			$this->open_connection();
+			
 			//preparar la consulta
 			//var_dump($this->query);
-			$result=$this->conn->prepare($this->query);
+			$result = $this->conn->prepare($this->query);
 			//ejecutar la consulta
 			$result->execute();
 			//crear el array con los resultados
-			while($this->rows[]=$result->fetch());
+			while($this->rows[] = $result->fetch());
 			//cierro la conexion
 			$this->close_connection();
 			//elimino e ultimo valor del vector
