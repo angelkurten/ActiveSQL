@@ -12,11 +12,11 @@
 	//iniciar el tiempo de ejecion
 	$time_start = microtime_float();
 		//consultar datos de la BD-------------------------
-		//$array=array('id'=>'1');
+		$array=array('id'=>'3');
 		//envio a la RAM los campos a filtrar
-		//$ac->limit('1',5);
+		$ac->where($array,"<");
 		//array con los campos a seleccionar
-		$array= array("nombre", 'email');
+		$array= array("nombre", 'id');
 		//envio a la RAM los campos a seleccionar
 		$ac->select($array);
 		//recupero los datos de la RAM, ejecuto la consulta y 
@@ -30,10 +30,9 @@
 	echo "Se han consultado ".count($user)." registros en $time_total segundos";
 	echo "<br>";
 	//muestro los datos en pantalla
-	/*for ($i=0; $i < 10; $i++) { 
-		var_dump($user[$i]);
-	}
-*/
+	//for ($i=0; $i < count($user); $i++) { 
+	//	var_dump($user[$i]);
+	//}
 
 	echo '<hr>';
 	

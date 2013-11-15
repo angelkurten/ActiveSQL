@@ -42,7 +42,7 @@
 				{
 					$this->query.= $this->limit;
 				}
-
+				var_dump($this->query);
 				//ejecutar consulta
 				$this->getQuery();
 
@@ -123,6 +123,25 @@
 			$this->liberar();
 		}
 
+		//funcion para ejecutar una query
+		public function query($query, $tipo=1)
+		{
+			if($query!="")
+			{
+				$this->query=$query;
+				if($tipo==1)
+				{
+					$this->executeQuery();
+				}
+				else
+				{
+					$this->getQuery();
+					$result=$this->rows;
+					return $result;
+				}
+			}
+		}
+
 		//funcion para actualizar
 		public function set(array $array)
 		{
@@ -164,7 +183,7 @@
 		}
 
 		//funcion para realizar consultas tipo where
-		public function where( array $array)
+		public function where( array $array, $op="=")
 		{
 			//extraer las keys del array
 			$columnas=array_keys($array);
@@ -172,11 +191,10 @@
 			$values=array_values($array);
 			//crear un array definitivo con los arrays anteriores
 			for ($i=0; $i < count($values); $i++) { 
-				$sql[$i]="".$columnas[$i]." = '".addslashes($values[$i])."'";
+				$sql[$i]="$columnas[$i] $op '".addslashes($values[$i])."'";
 			}
 			//creo el sql definitivo
 			$sqldf=implode(" and ", $sql);
-
 			$this->where=$sqldf;
 		}
 
