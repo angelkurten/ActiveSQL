@@ -162,7 +162,7 @@
 
                 	//crear un array definitivo con los arrays anteriores
                 	foreach($array as $key => $value) {
-                		if (!is_integer($value)) {
+                		if (!is_numeric($value)) {
                 			$value = $key . ' = ' . "'{$value}'";
                 		}
                 		$strQuery .= $key . ' = ' . $value . ' and ';
