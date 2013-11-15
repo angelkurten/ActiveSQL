@@ -155,24 +155,22 @@
 			$this->values = $values;
 		}
 
-		//funcion para realizar consultas tipo where
-		public function where( array $array)
-		{
-			//extraer las keys del array
-			$columnas = array_keys($array);
-			
-			//extraer todos los values del array
-			$values = array_values($array);
-			
-			//crear un array definitivo con los arrays anteriores
-			for ($i = 0; $i < count($values); $i++) { 
-				$sql[$i] = "" . $columnas[$i] . " = '" . addslashes($values[$i]) . "'";
-			}
-			
-			//creo el sql definitivo
-			$sqldf = implode(' and ', $sql);
-			$this->where = $sqldf;
-		}
+                //funcion para realizar consultas tipo where
+                public function where(array $array) 
+                {
+                	$strQuery = '';
+
+                	//crear un array definitivo con los arrays anteriores
+                	foreach($array as $key => $value) {
+                		if (!is_integer($value)) {
+                			$value = $key . ' = ' . "'{$value}'";
+                		}
+                		$strQuery .= $key . ' = ' . $value . ' and ';
+                	}
+                	
+                	//creo el sql definitivo
+                	$this->where = rtrim($strQuery, ' and ');
+                }
 
 
 		//funcion para limitar resultados de una consulta
