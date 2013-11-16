@@ -173,42 +173,22 @@
 			$values = '(' . implode(' , ', $sql) . ')';
 			$this->values = $values;
 		}
+        //funcion para realizar consultas tipo where
+        public function where(array $array) 
+        {
+        	$strQuery = '';
 
-<<<<<<< HEAD
-		//funcion para realizar consultas tipo where
-		public function where( array $array, $op="=")
-		{
-			//extraer las keys del array
-			$columnas=array_keys($array);
-			//extraer todos los values del array
-			$values=array_values($array);
-			//crear un array definitivo con los arrays anteriores
-			for ($i=0; $i < count($values); $i++) { 
-				$sql[$i]="$columnas[$i] $op '".addslashes($values[$i])."'";
-			}
-			//creo el sql definitivo
-			$sqldf=implode(" and ", $sql);
-			$this->where=$sqldf;
-		}
-=======
-                //funcion para realizar consultas tipo where
-                public function where(array $array) 
-                {
-                	$strQuery = '';
-
-                	//crear un array definitivo con los arrays anteriores
-                	foreach($array as $key => $value) {
-                		if (!is_numeric($value)) {
-                			$value = $key . ' = ' . "'{$value}'";
-                		}
-                		$strQuery .= $key . ' = ' . $value . ' and ';
-                	}
-                	
-                	//creo el sql definitivo
-                	$this->where = rtrim($strQuery, ' and ');
-                }
-
->>>>>>> ea4749046cc6a3445fdbe866a7ea9d340248d19b
+        	//crear un array definitivo con los arrays anteriores
+        	foreach($array as $key => $value) {
+        		if (!is_numeric($value)) {
+        			$value = $key . ' = ' . "'{$value}'";
+        		}
+        		$strQuery .= $key . ' = ' . $value . ' and ';
+        	}
+        	
+        	//creo el sql definitivo
+        	$this->where = rtrim($strQuery, ' and ');
+        }
 
 		//funcion para limitar resultados de una consulta
 		public function limit($init, $end = NULL)
