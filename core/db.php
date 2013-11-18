@@ -29,7 +29,7 @@
 			/* cambiar el conjunto de caracteres a utf8 */
 			//$this->conn->set_charset(self::$set_charset);
 			try {
-			    $this->conn = new PDO(self::$driver . ':host = ' . self::$db_host . ';dbname = ' . $this->db_name, self::$db_user, self::$db_pass);
+			    $this->conn = new PDO(self::$driver.':host='.self::$db_host.';dbname='.$this->db_name, self::$db_user, self::$db_pass);
 			} catch (Exception $e) {
 			  die('No se pudo conectar: ' . $e->getMessage());
 			}
