@@ -234,7 +234,6 @@
 	    public function fetch()
 		{
 			$r = $this->getQuery();
-			var_dump($r);
 			while($this->rows[] = $r->fetch(PDO::FETCH_OBJ));
 			return $this->rows;
 		}
@@ -243,6 +242,7 @@
 		public function row()
 		{
 			$r = $this->getQuery();
+			var_dump($r);
 			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
 			return $this->rows;
 		}

@@ -62,16 +62,12 @@
 		{
 			//abro la conexion
 			$this->open_connection();
-			//preparar la consulta
-			//var_dump($this->query);
+
 			$result = $this->conn->prepare($this->query);
 			//ejecutar la consulta
 			$result->execute();
-			//crear el array con los resultados
-			while($this->rows[] = $result->fetch());
-			//cierro la conexion
-			$this->close_connection();
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
+			
+			//retorno los resultados
+			return $result;
 		}
 	}
