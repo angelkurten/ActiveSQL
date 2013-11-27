@@ -62,7 +62,6 @@
 		{
 			//abro la conexion
 			$this->open_connection();
-			
 			//preparar la consulta
 			//var_dump($this->query);
 			$result = $this->conn->prepare($this->query);

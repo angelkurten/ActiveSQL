@@ -16,6 +16,12 @@
 		
 		//variable para limitar una consulta
 		private $limit = '';
+
+		//variable para agrupar una consulta
+		private $groupBy='';
+
+		//variable para ordenar una consulta
+		private $orderBy='';
 		
 		public function __construct()
 		{
@@ -40,22 +46,16 @@
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
 				}
-
+ 
 				//limitar la consulta
 				if ($this->limit != '') {
 					$this->query .= $this->limit;
 				}
-				var_dump($this->query);
-				//ejecutar consulta
-				$this->getQuery();
-				$result = $this->rows;
 			}
-			
+ 
 			//liberar memoria
 			$this->liberar();
-			
-			//retornar el resultado
-			return $result;
+			return $this;
 		}
 
 		//funcion para guardar datos en una BD
@@ -205,6 +205,49 @@
 			}	
 		}
 
+		public function orderBy(array $array, $orden = 'DESC')
+	    {
+	        $strQuery = '';
+	        foreach($array as $field) {
+	            $strQuery .= $field . ', ';
+	        }
+	        
+	        $this->orderBy = ' ORDER BY ' . rtrim($strQuery, ', ') . str_pad($orden, strlen($orden) + 2, ' ', STR_PAD_BOTH);
+	    }
+
+	    public function groupBy(array $array)
+	    {
+	        $strQuery = '';
+	        foreach($array as $field) {
+	            $strQuery .= $field . ', ';
+	        }
+	        
+	        $result = ' GROUP BY ' . rtrim($strQuery, ', ');
+	        
+	        if ($this->groupBy) {
+	            $result = ' GROUP BY ' . rtrim($strQuery, ', ') . ' ' . $this->groupBy;
+	        }
+	         
+	        $this->groupBy = $result;
+	    }
+
+	    public function fetch()
+		{
+			$r = $this->getQuery();
+			var_dump($r);
+			while($this->rows[] = $r->fetch(PDO::FETCH_OBJ));
+			return $this->rows;
+		}
+ 
+ 
+		public function row()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
+			return $this->rows;
+		}
+
+
 		//funcion para liberar memoria
 		public function liberar()
 		{
@@ -215,5 +258,7 @@
 			$this->mensaje = '';
 			$this->limit = '';
 			$this->rows = array();
+			$this->groupBy='';
+			$this->orderBy='';
 		}
 	}
