@@ -173,6 +173,7 @@
 			$values = '(' . implode(' , ', $sql) . ')';
 			$this->values = $values;
 		}
+        
         //funcion para realizar consultas tipo where
         public function where(array $array) 
         {
@@ -190,6 +191,49 @@
         	$this->where = rtrim($strQuery, ' and ');
         }
 
+        public function orderBy(array $array, $orden = 'DESC')
+	    {
+	        $strQuery = '';
+	        foreach($array as $field) {
+	            $strQuery .= $field . ', ';
+	        }
+	        
+	        $this->orderBy = ' ORDER BY ' . rtrim($strQuery, ', ') . str_pad($orden, strlen($orden) + 2, ' ', STR_PAD_BOTH);
+	    }
+
+	    public function groupBy(array $array)
+	    {
+	        $strQuery = '';
+	        foreach($array as $field) {
+	            $strQuery .= $field . ', ';
+	        }
+	        
+	        $result = ' GROUP BY ' . rtrim($strQuery, ', ');
+	        
+	        if ($this->groupBy) {
+	            $result = ' GROUP BY ' . rtrim($strQuery, ', ') . ' ' . $this->groupBy;
+	        }
+	         
+	        $this->groupBy = $result;
+	    }
+
+	    public function fetch()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch(PDO::FETCH_OBJ));
+			array_pop($this->rows);
+			return $this->rows;
+		}
+ 
+ 
+		public function row()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
+			array_pop($this->rows);
+			return $this->rows;
+		}
+		
 		//funcion para limitar resultados de una consulta
 		public function limit($init, $end = NULL)
 		{
