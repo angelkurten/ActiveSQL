@@ -270,3 +270,5 @@
 			$this->rows = array();
 		}
 	}
+	
+	$ac=new active;
