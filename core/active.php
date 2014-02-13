@@ -16,12 +16,6 @@
 		
 		//variable para limitar una consulta
 		private $limit = '';
-
-		//variable para agrupar una consulta
-		private $groupBy='';
-
-		//variable para ordenar una consulta
-		private $orderBy='';
 		
 		public function __construct()
 		{
@@ -46,16 +40,22 @@
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
 				}
- 
+
 				//limitar la consulta
 				if ($this->limit != '') {
 					$this->query .= $this->limit;
 				}
+				var_dump($this->query);
+				//ejecutar consulta
+				$this->getQuery();
+				$result = $this->rows;
 			}
- 
+			
 			//liberar memoria
 			$this->liberar();
-			return $this;
+			
+			//retornar el resultado
+			return $result;
 		}
 
 		//funcion para guardar datos en una BD
@@ -173,6 +173,7 @@
 			$values = '(' . implode(' , ', $sql) . ')';
 			$this->values = $values;
 		}
+        
         //funcion para realizar consultas tipo where
         public function where(array $array) 
         {
@@ -190,22 +191,7 @@
         	$this->where = rtrim($strQuery, ' and ');
         }
 
-		//funcion para limitar resultados de una consulta
-		public function limit($init, $end = NULL)
-		{
-			try {
-				if ((is_int($init)) and ($init > -1)) {
-					$this->limit = ' LIMIT ' . $init;
-					if (($end != NULL) and (is_int($end)) and ($end > -1)) {
-						$this->limit .= ', ' . $end;
-					}
-				}
-			} catch (Exception $e) {
-				
-			}	
-		}
-
-		public function orderBy(array $array, $orden = 'DESC')
+        public function orderBy(array $array, $orden = 'DESC')
 	    {
 	        $strQuery = '';
 	        foreach($array as $field) {
@@ -235,6 +221,7 @@
 		{
 			$r = $this->getQuery();
 			while($this->rows[] = $r->fetch(PDO::FETCH_OBJ));
+			array_pop($this->rows);
 			return $this->rows;
 		}
  
@@ -242,11 +229,34 @@
 		public function row()
 		{
 			$r = $this->getQuery();
-			var_dump($r);
 			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
+			array_pop($this->rows);
 			return $this->rows;
 		}
+		
+		//funcion para limitar resultados de una consulta
+		public function limit($init, $end = NULL)
+		{
+			try {
+				if ((is_int($init)) and ($init > -1)) {
+					$this->limit = ' LIMIT ' . $init;
+					if (($end != NULL) and (is_int($end)) and ($end > -1)) {
+						$this->limit .= ', ' . $end;
+					}
+				}
+			} catch (Exception $e) {
+				
+			}	
+		}
 
+		public function json()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
+				array_pop($this->rows);
+			return json_encode($this->rows);
+			
+		}
 
 		//funcion para liberar memoria
 		public function liberar()
@@ -258,7 +268,7 @@
 			$this->mensaje = '';
 			$this->limit = '';
 			$this->rows = array();
-			$this->groupBy='';
-			$this->orderBy='';
 		}
 	}
+	
+	$ac=new active;

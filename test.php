@@ -1,46 +1,20 @@
- <?php
- 
- class db
- {
-     private $sql;
-     
-     public function orderBy(array $array, $orden = 'DESC')
-     {
-         $strQuery = '';
-         foreach($array as $field) {
-             $strQuery .= $field . ', ';
-         }
-         $this->sql = ' ORDER BY ' . rtrim($strQuery, ', ') . str_pad($orden, strlen($orden) + 2, ' ', STR_PAD_BOTH);
-     }
-     
-     public function groupBy(array $array)
-     {
-         $strQuery = '';
-         foreach($array as $field) {
-             $strQuery .= $field . ', ';
-         }
-         
-         $result = ' GROUP BY ' . rtrim($strQuery, ', ');
-         
-         if ($this->sql) {
-             $result = ' GROUP BY ' . rtrim($strQuery, ', ') . ' ' . $this->sql;
-         }
-         
-         $this->sql = $result;
-     }
-     
-     public function __toString()
-     {
-         return $this->sql;
-     }
-}
- 
- 
-// Test Zone
-$d = new db();
-$data = array('Nombre', 'Apellido');
- 
-$d->orderBy($data);
-$d->groupBy($data);
- 
-echo $d;
+
+<?php
+ini_set('memory_limit', '-1');
+	require_once('core/lib.php');
+	//UTILIZANDO EL METODO NORMAL 
+	//iniciar el tiempo de ejecion
+	$time_start = microtime_float();
+		$conn=new mysqli('localhost', 'root','', 'active');
+		$result=$conn->query("SELECT nombre, email FROM usuarios");
+		//crear el array con los resultados
+		while($user[]=$result->fetch_assoc());
+	//finalizar el tiempo de ejecucion
+	$time_end = microtime_float();
+	//medir el tiempo de ejecucion
+	$time_total = $time_end - $time_start;
+	//mostrar el tiempo de ejecuion
+	echo "Se han consultado ".count($user)." registros en $time_total segundos";
+	echo "<br>";
+?>
+<hr>

@@ -5,7 +5,6 @@
 	$libs=array('core/active.php');
 	import($libs);
 
-	$ac=new active;
 	echo '<hr>';
 	ini_set('memory_limit', '-1');
 	//UTILIZANDO ACTIVEPHP
@@ -21,7 +20,7 @@
 		$ac->select($array);
 		//recupero los datos de la RAM, ejecuto la consulta y 
 		//limpio la RAM
-		$user=$ac->get('usuarios')->fetch();
+		$user=$ac->get('usuarios');
 	//finalizar el tiempo de ejecucion
 	$time_end = microtime_float();
 	//medir el tiempo de ejecucion
