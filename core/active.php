@@ -205,6 +205,15 @@
 			}	
 		}
 
+		public function json()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
+				array_pop($this->rows);
+			return json_encode($this->rows);
+			
+		}
+
 		//funcion para liberar memoria
 		public function liberar()
 		{
