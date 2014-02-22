@@ -8,6 +8,7 @@
 			$this->mensaje = '';
 		}
 
+
 		//funcion para ejecutar una query
 		public function query($query, $tipo=1)
 		{
@@ -114,7 +115,6 @@
 	    public function fetch()
 		{
 			$r = $this->getQuery();
-<<<<<<< HEAD
 			while($this->rows[] = $r->fetch_assoc());
 			//elimino e ultimo valor del vector
 			array_pop($this->rows);
@@ -139,22 +139,6 @@
 			return json_encode($this->rows);			
 		}
 
-=======
-			while($this->rows[] = $r->fetch(PDO::FETCH_OBJ));
-			array_pop($this->rows);
-			return $this->rows;
-		}
- 
- 
-		public function row()
-		{
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
-			array_pop($this->rows);
-			return $this->rows;
-		}
-		
->>>>>>> master
 		//funcion para limitar resultados de una consulta
 		public function limit($init, $end = NULL)
 		{
@@ -168,15 +152,6 @@
 			} catch (Exception $e) {
 				
 			}	
-		}
-
-		public function json()
-		{
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch(PDO::FETCH_ASSOC));
-				array_pop($this->rows);
-			return json_encode($this->rows);
-			
 		}
 
 		//funcion para liberar memoria
@@ -193,8 +168,4 @@
 		}
 	}
 	
-<<<<<<< HEAD
 	$ac=new active;
-=======
-	$ac=new active;
->>>>>>> master
