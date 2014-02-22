@@ -3,12 +3,6 @@
 	class active extends crud
 	{
 				
-		public function __construct()
-		{
-			$this->mensaje = '';
-		}
-
-
 		//funcion para ejecutar una query
 		public function query($query, $tipo=1)
 		{
@@ -152,19 +146,6 @@
 			} catch (Exception $e) {
 				
 			}	
-		}
-
-		//funcion para liberar memoria
-		public function liberar()
-		{
-			$this->where = '';
-			$this->select = '';
-			$this->set = '';
-			$this->values = '';
-			$this->mensaje = '';
-			$this->limit = '';
-			$this->orderBy='';
-			$this->rows = array();
 		}
 	}
 	

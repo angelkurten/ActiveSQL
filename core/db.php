@@ -15,7 +15,7 @@
 		protected $query;
 		protected $rows = array();
 		private $conn;
-		public $mensaje = '';
+		public $mensaje = FALSE;
 		
 
 		//metodos abstractos para el CRUD
@@ -30,7 +30,7 @@
 			    $this->conn = new mysqli(self::$db_host, self::$db_user, self::$db_pass, $this->db_name);
 			    $this->conn->set_charset(self::$set_charset);
 			} catch (mysqli_sql_exception $e) {
-			  die('No se pudo conectar: ' . $e->getMessage());
+			  	die('No se pudo conectar: ' . $e->getMessage());
 			}
 		}
 
