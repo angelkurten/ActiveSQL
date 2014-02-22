@@ -52,7 +52,7 @@
 		public function select(array $array)
 		{
 			$values = implode(' , ', $array);
-			$this->select = $values;
+			$this->select = addslashes($values);
 		}
 
 		//funcion para seleccionar los values

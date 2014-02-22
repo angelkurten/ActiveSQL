@@ -1,6 +1,7 @@
 <?php
 	require_once('core/lib.php');
-	
+	// Ensure reporting is setup correctly 
+	mysqli_report(MYSQLI_REPORT_STRICT); 
 	//clase para manejo de la base de datos
 	abstract class db
 	{
@@ -9,7 +10,6 @@
 		private static $db_user = 'root';
 		private static $db_pass = '';
 		private static $set_charset = 'utf8';
-		private static $driver = 'mysql';
 		protected $db_name = 'active';
 
 		protected $query;
@@ -25,47 +25,52 @@
 		abstract protected function delete($table);
 
 		//metodo para conectar con la base de datos
-		private function open_connection(){
-			/* cambiar el conjunto de caracteres a utf8 */
-			//$this->conn->set_charset(self::$set_charset);
+		private function open_connection(){	
 			try {
 			    $this->conn = new mysqli(self::$db_host, self::$db_user, self::$db_pass, $this->db_name);
-			} catch (Exception $e) {
+			    $this->conn->set_charset(self::$set_charset);
+			} catch (mysqli_sql_exception $e) {
 			  die('No se pudo conectar: ' . $e->getMessage());
 			}
 		}
 
 		//metodo para desconectarme de la base de datos
-		private function close_connection()
-		{
+		private function close_connection(){
 			$this->conn = null;
 		}
 
 		//ejecutar una query de tipo INSERT;DELETE;UPDATE
-		protected function executeQuery()
-		{
-			//abrir conexion
-			$this->open_connection();
-			//preparar la consulta
-			$result=$this->conn->query($this->query);	
-			//cerrar conexion
-			$this->close_connection();
+		protected function executeQuery(){
+			try{
+				//abrir conexion
+				$this->open_connection();
+				//preparar la consulta
+				$result=$this->conn->query(addslashes($this->query));	
+				//cerrar conexion
+				$this->close_connection();
+			} catch (Exception $e){
+				die('Error al ejecutar la consulata: '.$e->getMessage());
+			}
 		}
 
 		//traer los resultados de una consulta tipo SELECT
 		protected function getQuery()
 		{
-			//abro la conexion
-			$this->open_connection();
-			//ejecutar la consulta
-			var_dump($this->query);
-			$result = $this->conn->query($this->query);
-			//crear el array con los resultados
-			while($this->rows[] = $result->fetch_object());
-			//cierro la conexion
-			$this->close_connection();
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
-			return $result;
+			try {
+				//abro la conexion
+				$this->open_connection();
+				//ejecutar la consulta
+				var_dump($this->query);
+				$result = $this->conn->query(addslashes($this->query));
+				//crear el array con los resultados
+				while($this->rows[] = $result->fetch_object());
+				//cierro la conexion
+				$this->close_connection();
+				//elimino e ultimo valor del vector
+				array_pop($this->rows);
+				return $result;	
+			} catch (Exception $e) {
+				die('Error al ejecutar la consulata: '.$e->getMessage());
+			}
 		}
 	}
