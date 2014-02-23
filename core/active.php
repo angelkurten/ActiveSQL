@@ -70,10 +70,13 @@
 
         	//crear un array definitivo con los arrays anteriores
         	foreach($array as $key => $value) {
-        		if (!is_numeric($value)) {
+        		if (is_numeric($value)) {
+        			$value = $key . ' = ' . "{$value}";
+        		}
+        		else{
         			$value = $key . ' = ' . "'{$value}'";
         		}
-        		$strQuery .= $key . ' = ' . $value . ' and ';
+        		$strQuery .=  $value . ' and ';
         	}
         	
         	//creo el sql definitivo
@@ -106,7 +109,17 @@
 	        $this->groupBy = $result;
 	    }
 
-	    public function fetch()
+	    public function object()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch_object());
+			//elimino e ultimo valor del vector
+			array_pop($this->rows);
+			return $this->rows;
+		}
+
+		
+		public function fecth()
 		{
 			$r = $this->getQuery();
 			while($this->rows[] = $r->fetch_assoc());
@@ -115,15 +128,6 @@
 			return $this->rows;
 		}
 		
-		public function row()
-		{
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch_assoc());
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
-			return $this->rows;
-		}
-
 		public function json()
 		{
 			$r = $this->getQuery();

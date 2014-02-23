@@ -60,14 +60,9 @@
 				//abro la conexion
 				$this->open_connection();
 				//ejecutar la consulta
-				var_dump($this->query);
 				$result = $this->conn->query(addslashes($this->query));
-				//crear el array con los resultados
-				while($this->rows[] = $result->fetch_object());
 				//cierro la conexion
 				$this->close_connection();
-				//elimino e ultimo valor del vector
-				array_pop($this->rows);
 				return $result;	
 			} catch (Exception $e) {
 				die('Error al ejecutar la consulata: '.$e->getMessage());

@@ -28,7 +28,6 @@
 			$result = $this->mensaje;
 			var_dump($this->mensaje);
 			if ($result != TRUE) {
-				echo "string";
 				//construir consulta con o sin campos a filtrar
 				$this->query = 'SELECT * FROM ' . $table;
 				
