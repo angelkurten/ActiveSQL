@@ -22,18 +22,12 @@
 
 		protected $groupBy = '';
 
-		public function __construct()
-		{
-			$this->mensaje = '';
-		}
-
 		//function para realizar una consulta de tipo SELECT
 		public function get($table)
 		{
 			$result = $this->mensaje;
 			
-			if (!$result) {
-				
+			if ($result != TRUE) {
 				//construir consulta con o sin campos a filtrar
 				$this->query = 'SELECT * FROM ' . $table;
 				
@@ -60,14 +54,11 @@
 				if ($this->limit != '') {
 					$this->query .= $this->limit;
 				}
- 
+ 				
 				return $this;
 			}
-
 			//liberar memoria
 			$this->liberar();
-			
-			//retornar el resultado
 			return $result;
 		}
 
@@ -125,6 +116,19 @@
 				$this->executeQuery();
 			}
 			$this->liberar();
+		}
+
+		//funcion para liberar memoria
+		public function liberar()
+		{
+			$this->where = '';
+			$this->select = '';
+			$this->set = '';
+			$this->values = '';
+			$this->mensaje = FALSE;
+			$this->limit = '';
+			$this->orderBy='';
+			$this->rows = array();
 		}
 	}
 ?>

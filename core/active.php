@@ -1,14 +1,9 @@
 <?php
 	require_once('crud.php');
+	require_once('libs/Array2XML.php');
 	class active extends crud
 	{
 				
-		public function __construct()
-		{
-			$this->mensaje = '';
-		}
-
-
 		//funcion para ejecutar una query
 		public function query($query, $tipo=1)
 		{
@@ -52,7 +47,7 @@
 		public function select(array $array)
 		{
 			$values = implode(' , ', $array);
-			$this->select = $values;
+			$this->select = addslashes($values);
 		}
 
 		//funcion para seleccionar los values
@@ -76,10 +71,13 @@
 
         	//crear un array definitivo con los arrays anteriores
         	foreach($array as $key => $value) {
-        		if (!is_numeric($value)) {
+        		if (is_numeric($value)) {
+        			$value = $key . ' = ' . "{$value}";
+        		}
+        		else{
         			$value = $key . ' = ' . "'{$value}'";
         		}
-        		$strQuery .= $key . ' = ' . $value . ' and ';
+        		$strQuery .=  $value . ' and ';
         	}
         	
         	//creo el sql definitivo
@@ -112,7 +110,17 @@
 	        $this->groupBy = $result;
 	    }
 
-	    public function fetch()
+	    public function object()
+		{
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch_object());
+			//elimino e ultimo valor del vector
+			array_pop($this->rows);
+			return $this->rows;
+		}
+
+		
+		public function fecth()
 		{
 			$r = $this->getQuery();
 			while($this->rows[] = $r->fetch_assoc());
@@ -121,15 +129,6 @@
 			return $this->rows;
 		}
 		
-		public function row()
-		{
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch_assoc());
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
-			return $this->rows;
-		}
-
 		public function json()
 		{
 			$r = $this->getQuery();
@@ -137,6 +136,18 @@
 			//elimino e ultimo valor del vector
 			array_pop($this->rows);
 			return json_encode($this->rows);			
+		}
+
+		public function xml(){
+			
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch_assoc());
+			//elimino e ultimo valor del vector
+			array_pop($this->rows);
+
+			$xml = Array2XML::generate($this->rows);		
+					
+			return $xml;
 		}
 
 		//funcion para limitar resultados de una consulta
@@ -152,19 +163,6 @@
 			} catch (Exception $e) {
 				
 			}	
-		}
-
-		//funcion para liberar memoria
-		public function liberar()
-		{
-			$this->where = '';
-			$this->select = '';
-			$this->set = '';
-			$this->values = '';
-			$this->mensaje = '';
-			$this->limit = '';
-			$this->orderBy='';
-			$this->rows = array();
 		}
 	}
 	
