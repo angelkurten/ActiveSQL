@@ -1,5 +1,5 @@
 <?php
-	require_once('core/lib.php');
+	//require_once('core/lib.php');
 	// Ensure reporting is setup correctly 
 	mysqli_report(MYSQLI_REPORT_STRICT); 
 	//clase para manejo de la base de datos

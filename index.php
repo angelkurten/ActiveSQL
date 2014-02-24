@@ -16,7 +16,7 @@
 		//envio a la RAM los campos a filtrar
 		//$ac->where($array,"<");
 		//$ac->groupBy(array('apellido'));
-		//$ac->limit(3);
+		$ac->limit(3);
 		$array=array('id');
 		$ac->orderBy($array);
 		//array con los campos a seleccionar
@@ -25,7 +25,7 @@
 		$ac->select($array);
 		//recupero los datos de la RAM, ejecuto la consulta y 
 		//limpio la RAM
-		$user=$ac->get('usuarios')->object();
+		$user=$ac->get('usuarios')->xml();
 		
 	//finalizar el tiempo de ejecucion
 	$time_end = microtime_float();
@@ -34,9 +34,9 @@
 	//mostrar el tiempo de ejecuion
 	echo "Se han consultado ".count($user)." registros en $time_total segundos";
 	echo "<br>";
-	//echo $user;
+	echo $user;
 	//muestro los datos en pantalla
-	for ($i=0; $i < count($user); $i++) { 
-		var_dump($user[$i]);
-	}
+	//for ($i=0; $i < count($user); $i++) { 
+	//	var_dump($user[$i]);
+	//}
 ?>

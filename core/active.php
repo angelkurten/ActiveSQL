@@ -1,5 +1,6 @@
 <?php
 	require_once('crud.php');
+	require_once('libs/Array2XML.php');
 	class active extends crud
 	{
 				
@@ -135,6 +136,18 @@
 			//elimino e ultimo valor del vector
 			array_pop($this->rows);
 			return json_encode($this->rows);			
+		}
+
+		public function xml(){
+			
+			$r = $this->getQuery();
+			while($this->rows[] = $r->fetch_assoc());
+			//elimino e ultimo valor del vector
+			array_pop($this->rows);
+
+			$xml = Array2XML::generate($this->rows);		
+					
+			return $xml;
 		}
 
 		//funcion para limitar resultados de una consulta
