@@ -3,6 +3,8 @@
 
 	class crud extends db{
 
+		protected $type='';
+
 		//variable para almacenar la consulta del where
 		protected $where = '';
 		
@@ -26,8 +28,8 @@
 		public function get($table)
 		{
 			$result = $this->mensaje;
-			
 			if ($result != TRUE) {
+				$this->type='get';
 				//construir consulta con o sin campos a filtrar
 				$this->query = 'SELECT * FROM ' . $table;
 				
@@ -65,6 +67,7 @@
 		//funcion para guardar datos en una BD
 		public function save($table)
 		{
+			$this->type='save';
 			$result = $this->mensaje;
 			
 			if (!$result) {
@@ -84,6 +87,7 @@
 		//funcion apra realizar actualizaciones en la BD
 		public function edit($table)
 		{
+			$this->type='edit';
 			$result = $this->mensaje;
 			
 			if (!$result) {
@@ -107,6 +111,7 @@
 		//function para borrar campos de la BD
 		public function delete($table)
 		{
+			$this->type='delete';
 			if (!$this->mensaje) {
 				$this->query = 'DELETE FROM '.$table;
 				
@@ -129,6 +134,7 @@
 			$this->limit = '';
 			$this->orderBy='';
 			$this->rows = array();
+			$this->type='';
 		}
 	}
 ?>

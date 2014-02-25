@@ -1,6 +1,5 @@
 <?php
-    require_once('core/active.php');
-	
+    	
 	/**
 	 * Archivo para almacenar las librerias y funcion utilitarias en la aplicacion
 	 * Autor: AngelKurten
@@ -10,7 +9,36 @@
 	//Funcion para personalizar los errores de PHP
 	function showErrors ($numero, $error, $archivo, $linea)
 	{
-		echo '<br/>Ha ocurrido un error en el archivo ' . $archivo . ', la linea ' . $linea . '<br/> ERROR: ' . $error . '';
+		echo '<style>
+				#errorActiveSQlhas23432{
+					border:1px solid rgba(250,20,20,0.2);
+					background-color: rgba(50,20,20,0.2);
+					width: 100%;
+					margin-top: 20px;
+				}
+				#errorActiveSQlhas23432 td{
+					text-align: center;
+				}
+				#errorActiveSQlhas234324sf{
+					border-bottom: 1px solid rgba(250,20,20,0.2);
+				}
+			</style>';
+		echo '<table style="border-width=10px ;" id="errorActiveSQlhas23432">
+				<tr>
+					<td id="errorActiveSQlhas234324sf">TIPO ERROR</td>
+					<td id="errorActiveSQlhas234324sf">ERROR #</td>
+					<td id="errorActiveSQlhas234324sf">ARCHIVO</td>
+					<td id="errorActiveSQlhas234324sf">LINEA</td>
+					<td id="errorActiveSQlhas234324sf">DESCRIPCION</td>
+				</tr>
+				<tr>
+					<td>FATAL ERROR</td>
+					<td>'.$numero.'</td>
+					<td>'.$archivo.'</td>
+					<td>'.$linea.'</td>
+					<td>'.$error.'</td>
+				</tr>
+			</table>';
 	}
 	set_error_handler('showErrors');
 
