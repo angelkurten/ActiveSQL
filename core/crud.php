@@ -4,25 +4,14 @@
 	class crud extends db{
 
 		protected $type='';
-
-		//variable para almacenar la consulta del where
 		protected $where = '';
-		
-		//varaiable para almacenar los camos a filtrar en el GET
 		protected $select = '';
-		
-		//variables para almacenar los campos a actualizar en el SET
 		protected $set = '';
-		
-		//variable para los values del INSERT
 		protected $values = '';
-		
-		//variable para limitar una consulta
 		protected $limit = '';
-
 		protected $orderBy = '';
-
 		protected $groupBy = '';
+		protected $join = '';
 
 		//function para realizar una consulta de tipo SELECT
 		public function get($table)
@@ -35,6 +24,11 @@
 				
 				if ($this->select != '') {
 					$this->query = 'SELECT ' . $this->select . ' FROM ' . $table;
+				}
+				
+				//enlazar la consulta
+				if ($this->join != '') {
+					$this->query .= $this->join;
 				}
 				
 				//completar consulta con o sin filtro where
@@ -135,6 +129,7 @@
 			$this->orderBy='';
 			$this->rows = array();
 			$this->type='';
+			$this->join='';
 		}
 	}
 ?>

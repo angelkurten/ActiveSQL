@@ -160,8 +160,10 @@
 			}				
 		}
 
-		public function xml(){
-			if ($this->type=='get') {
+		public function xml()
+		{
+			if ($this->type=='get') 
+			{
 				$r = $this->getQuery();
 				//liberar memoria
 				$this->liberar();
@@ -177,6 +179,18 @@
 			else
 			{
 				showErrors('1AS', 'method only available for get()','undefined', 'undefined');
+			}
+		}
+
+		//function para realizar joins o enlazado de consultar
+		public function join($table, $condicion, $type="")
+		{
+			////JOIN comentarios ON comentarios.id = blogs.id
+			if(is_string($table) and is_string($condicion) and is_string($type)){
+				$this->join .= addslashes($type).' JOIN '.addslashes($table).' ON '.addslashes($condicion);
+			}
+			else{
+				showErrors('2AS', 'Type value icorrecto in the parameter');
 			}
 		}
 
