@@ -48,6 +48,8 @@
 				$result=$this->conn->query(addslashes($this->query));	
 				//cerrar conexion
 				$this->close_connection();
+
+				return $result;
 			} catch (Exception $e){
 				die('Error al ejecutar la consulata: '.$e->getMessage());
 			}

@@ -4,7 +4,7 @@
 
 	class Rest
 	{
-		private $url = '127.0.0.1/ActiveSQL/core/rest.php';
+		private $url = '';
 		public $method = '';
 		private $headers = array(
 						    'Accept: application/json',

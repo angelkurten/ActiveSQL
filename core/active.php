@@ -1,9 +1,10 @@
 <?php
 	require_once('crud.php');
 	require_once('libs/Array2XML.php');
+	require_once('lib.php');
 	class active extends crud
 	{
-				
+
 		//funcion para ejecutar una query
 		public function query($query, $tipo=1)
 		{
@@ -112,18 +113,30 @@
 
 	    public function object()
 		{
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch_object());
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
-			return $this->rows;
+			if($this->type=='get'){
+				$r = $this->getQuery();
+				//liberar memoria
+				$this->liberar();
+				while($this->rows[] = $r->fetch_object());
+				$r->free();
+				//elimino e ultimo valor del vector
+				array_pop($this->rows);
+				return $this->rows;
+			}
+			else
+			{
+				showErrors('1AS', 'method only available for get()','undefined', 'undefined');
+			}	
 		}
 
 		
 		public function fecth()
 		{
 			$r = $this->getQuery();
+			//liberar memoria
+			$this->liberar();
 			while($this->rows[] = $r->fetch_assoc());
+			$r->free();
 			//elimino e ultimo valor del vector
 			array_pop($this->rows);
 			return $this->rows;
@@ -131,23 +144,40 @@
 		
 		public function json()
 		{
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch_assoc());
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
-			return json_encode($this->rows);			
+			if($this->type=='get'){
+				$r = $this->getQuery();
+				//liberar memoria
+				$this->liberar();
+				while($this->rows[] = $r->fetch_assoc());
+				$r->free();
+				//elimino e ultimo valor del vector
+				array_pop($this->rows);
+				return json_encode($this->rows);
+			}
+			else
+			{
+				showErrors('1AS', 'method only available for get()','undefined', 'undefined');
+			}				
 		}
 
 		public function xml(){
-			
-			$r = $this->getQuery();
-			while($this->rows[] = $r->fetch_assoc());
-			//elimino e ultimo valor del vector
-			array_pop($this->rows);
+			if ($this->type=='get') {
+				$r = $this->getQuery();
+				//liberar memoria
+				$this->liberar();
+				while($this->rows[] = $r->fetch_assoc());
+				$r->free();
+				//elimino e ultimo valor del vector
+				array_pop($this->rows);
 
-			$xml = Array2XML::generate($this->rows);		
-					
-			return $xml;
+				$xml = Array2XML::generate($this->rows);		
+						
+				return $xml;
+			}
+			else
+			{
+				showErrors('1AS', 'method only available for get()','undefined', 'undefined');
+			}
 		}
 
 		//funcion para limitar resultados de una consulta
