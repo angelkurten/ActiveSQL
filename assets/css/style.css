@@ -98,7 +98,7 @@ header{
   -moz-background-size:cover; 
   -webkit-background-size:cover; 
   background-size:cover;
-
+  border-radius: 30px;
 }
 .masthead h1{ 
   font-size: 36px;
