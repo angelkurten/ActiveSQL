@@ -20,7 +20,7 @@
 		//envio a la RAM los campos a filtrar
 		//$ac->where($array,"<");
 		//$ac->groupBy(array('apellido'));
-		$ac->limit(60000);
+		$ac->limit(10);
 		$array=array('id');
 		$ac->orderBy($array);
 		//array con los campos a seleccionar
@@ -29,7 +29,7 @@
 		$ac->select($array);
 		//recupero los datos de la RAM, ejecuto la consulta y 
 		//limpio la RAM
-		$user=$ac->get('usuarios')->fecth();
+		$user=$ac->get('usuarios')->json();
 		
 	//finalizar el tiempo de ejecucion
 	$time_end = microtime_float();
@@ -38,38 +38,7 @@
 	//mostrar el tiempo de ejecuion
 	echo "Se han consultado ".count($user)." registros en $time_total segundos";
 	echo "<br>";
-	//echo $user;
-
-
-	$time_start=0;
-	$user=0;
-	$time_start = microtime_float();
-
-		//consultar datos de la BD-------------------------
-		//$array=array('id'=>'3');
-		//envio a la RAM los campos a filtrar
-		//$ac->where($array,"<");
-		//$ac->groupBy(array('apellido'));
-		$ac->limit(60000);
-		$array=array('id');
-		$ac->orderBy($array);
-		//array con los campos a seleccionar
-		$array= array("nombre",'apellido', 'id');		
-		//envio a la RAM los campos a seleccionar
-		$ac->select($array);
-		//recupero los datos de la RAM, ejecuto la consulta y 
-		//limpio la RAM
-		$user=$ac->get('usuarios')->fecth();
-		
-	//finalizar el tiempo de ejecucion
-	$time_end = microtime_float();
-	//medir el tiempo de ejecucion
-	$time_total = $time_end - $time_start;
-	//mostrar el tiempo de ejecuion
-	echo "Se han consultado ".count($user)." registros en $time_total segundos";
-	echo "<br>";
-	//echo $user;
-	//muestro los datos en pantalla
+	echo $user;
 ?>
 
 </body>
