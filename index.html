@@ -102,21 +102,9 @@
               </div>
               <!--end span4-->
               <div class="span4"> <i class="feature-icon icon-resize-full"></i>
-                <h3>Flexibilidad</h3>
+                <h3>Servicios RESTful(futuro)</h3>
                 <p>
-                  Una de las ventajas de usar ActiveSQL, es que tienes la opcione de conectarte a multiples base de datos ademas de tener la opcion de conectar una parte de tu aplicacion con una base de datos diferente :D
-                  <ul>
-                    Lista de dase de datos soportadas:
-                    <li>Cubrid</li>
-                    <li>FreeTDS</li>
-                    <li>Sybase</li>
-                    <li>Firebird</li>
-                    <li>MySQL 3.x/4.x/5.x</li>
-                    <li>Oracle</li>
-                    <li>PostgreSQL</li>
-                    <li>SQLite 3 and SQLite 2</li>
-                    <li>Microsoft SQL Server / SQL Azure</li>
-                  </ul>
+                  Se tiene pensando incluir en un futuro proximo, incluir la posibilidad de crear servicios RESTful de una forma sencilla, de echo en la version actual ya se encuentra un pequeño webservices funcionando con la base de datos a modo de prueba, mas adelante ampliaremos esta caracteritica.
                 </p>
               </div>
               <!--end span4-->
@@ -174,8 +162,9 @@
 $array= array('nombre', 'email');
 //envio los campos a seleccionar
 $ac->select($array);
-//construyo y ejecuto la consulta
-$user=$ac->get('usuarios');
+//construyo y ejecuto la consulta, me duelve un valor segun yo solo solicite
+//json, xml, object y fetch son las opciones disponibles
+$user=$ac->get('usuarios')-json();
 </pre>
                 </section>
             <section class="sec-header">
