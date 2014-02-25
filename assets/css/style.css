@@ -89,10 +89,10 @@ header{
 .masthead{ text-align:center;}
 #brand{
   display: block;	
-  background: url(../img/logo.png) no-repeat; 
+  background: url(../img/logo.png) no-repeat 100%; 
   background-position:center;
-  width: 753px; 
-  height: 408px;
+  width:500px; 
+  height: 150px;
   text-indent: -9999px;
   margin: 30px auto;
   -moz-background-size:cover; 
