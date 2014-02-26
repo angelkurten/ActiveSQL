@@ -73,10 +73,10 @@
         	//crear un array definitivo con los arrays anteriores
         	foreach($array as $key => $value) {
         		if (is_numeric($value)) {
-        			$value = $key . ' = ' . "{$value}";
+        			$value = '{table}.'.$key . ' = ' . "{$value}";
         		}
         		else{
-        			$value = $key . ' = ' . "'{$value}'";
+        			$value = '{table}.'.$key . ' = ' . "'{$value}'";
         		}
         		$strQuery .=  $value . ' and ';
         	}

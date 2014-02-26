@@ -16,9 +16,9 @@
 	$time_start = microtime_float();
 
 		//consultar datos de la BD-------------------------
-		//$array=array('id'=>'3');
+		$array=array('Cod_Dpto'=>1);
 		//envio a la RAM los campos a filtrar
-		//$ac->where($array,"<");
+		$ac->where($array);
 		//$ac->groupBy(array('apellido'));
 		$ac->limit(10);
 		//array con los campos a seleccionar

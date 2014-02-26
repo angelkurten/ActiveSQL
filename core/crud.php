@@ -30,7 +30,7 @@
 				if ($this->join != '') {
 					$this->query .= $this->join;
 				}
-				
+
 				//completar consulta con o sin filtro where
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
@@ -51,6 +51,7 @@
 					$this->query .= $this->limit;
 				}
  				
+ 				$this->query=str_replace("{table}", $table, $this->query);
 				return $this;
 			}
 			//liberar memoria

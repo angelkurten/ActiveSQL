@@ -16,6 +16,8 @@
 		protected $rows = array();
 		private $conn;
 		public $mensaje = FALSE;
+
+		private $debug = TRUE;
 		
 
 		//metodos abstractos para el CRUD
@@ -61,6 +63,9 @@
 			try {
 				//abro la conexion
 				$this->open_connection();
+				if ($this->debug==TRUE) {
+					var_dump($this->query);
+				}
 				//ejecutar la consulta
 				$result = $this->conn->query(addslashes($this->query));
 				//cierro la conexion
