@@ -73,10 +73,10 @@
         	//crear un array definitivo con los arrays anteriores
         	foreach($array as $key => $value) {
         		if (is_numeric($value)) {
-        			$value = $key . ' = ' . "{$value}";
+        			$value = '{table}.'.$key . ' = ' . "{$value}";
         		}
         		else{
-        			$value = $key . ' = ' . "'{$value}'";
+        			$value = '{table}.'.$key . ' = ' . "'{$value}'";
         		}
         		$strQuery .=  $value . ' and ';
         	}
@@ -160,8 +160,10 @@
 			}				
 		}
 
-		public function xml(){
-			if ($this->type=='get') {
+		public function xml()
+		{
+			if ($this->type=='get') 
+			{
 				$r = $this->getQuery();
 				//liberar memoria
 				$this->liberar();
@@ -180,19 +182,28 @@
 			}
 		}
 
+		//function para realizar joins o enlazado de consultar
+		public function join($table, $condicion, $type="")
+		{
+			////JOIN comentarios ON comentarios.id = blogs.id
+			if(is_string($table) and is_string($condicion) and is_string($type)){
+				$this->join .= addslashes($type).' JOIN '.addslashes($table).' ON '.addslashes($condicion);
+			}
+			else{
+				showErrors('2AS', 'Type value icorrecto in the parameter');
+			}
+		}
+
 		//funcion para limitar resultados de una consulta
 		public function limit($init, $end = NULL)
 		{
-			try {
-				if ((is_int($init)) and ($init > -1)) {
-					$this->limit = ' LIMIT ' . $init;
-					if (($end != NULL) and (is_int($end)) and ($end > -1)) {
-						$this->limit .= ', ' . $end;
-					}
+			if ((is_numeric($init)) and ($init >= 0)) {
+				$this->limit = ' LIMIT ' . $init;
+
+				if (($end != NULL) and (is_numeric($end)) and ($end >= 0)) {
+					$this->limit .= ', ' . $end;
 				}
-			} catch (Exception $e) {
-				
-			}	
+			}
 		}
 	}
 	

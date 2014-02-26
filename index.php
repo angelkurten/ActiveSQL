@@ -16,20 +16,19 @@
 	$time_start = microtime_float();
 
 		//consultar datos de la BD-------------------------
-		//$array=array('id'=>'3');
+		$array=array('Cod_Dpto'=>1);
 		//envio a la RAM los campos a filtrar
-		//$ac->where($array,"<");
+		$ac->where($array);
 		//$ac->groupBy(array('apellido'));
 		$ac->limit(10);
-		$array=array('id');
-		$ac->orderBy($array);
 		//array con los campos a seleccionar
-		$array= array("nombre",'apellido', 'id');		
+		$array= array('*');		
 		//envio a la RAM los campos a seleccionar
 		$ac->select($array);
+		$ac->join('departamentos','departamentos.Cod_Dpto=ciudades.Cod_Dpto');
 		//recupero los datos de la RAM, ejecuto la consulta y 
 		//limpio la RAM
-		$user=$ac->get('usuarios')->json();
+		$user=$ac->get('ciudades')->json();
 		
 	//finalizar el tiempo de ejecucion
 	$time_end = microtime_float();
