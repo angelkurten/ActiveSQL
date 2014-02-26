@@ -197,16 +197,13 @@
 		//funcion para limitar resultados de una consulta
 		public function limit($init, $end = NULL)
 		{
-			try {
-				if ((is_int($init)) and ($init > -1)) {
-					$this->limit = ' LIMIT ' . $init;
-					if (($end != NULL) and (is_int($end)) and ($end > -1)) {
-						$this->limit .= ', ' . $end;
-					}
+			if ((is_numeric($init)) and ($init >= 0)) {
+				$this->limit = ' LIMIT ' . $init;
+
+				if (($end != NULL) and (is_numeric($end)) and ($end >= 0)) {
+					$this->limit .= ', ' . $end;
 				}
-			} catch (Exception $e) {
-				
-			}	
+			}
 		}
 	}
 	
