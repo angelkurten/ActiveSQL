@@ -68,11 +68,10 @@
 			if (!$result) {
 				$this->query = 'INSERT INTO ' . $table . ' VALUES ' . $this->values . ';';
 				
+				$this->query=str_replace("{table}", $table, $this->query);
 				//ejecutar consulta
-				$this->executeQuery();
-				$result = $this->rows;
+				$result = $this->executeQuery();
 			}
-		
 			//liberar la memoria
 			$this->liberar();
 			return $result;
@@ -94,6 +93,7 @@
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
 				}
+				$this->query=str_replace("{table}", $table, $this->query);
 				$result = $this->executeQuery();
 			}
 			
@@ -113,9 +113,12 @@
 				if ($this->where != '') {
 					$this->query .= ' WHERE ' . $this->where;
 				}
-				$this->executeQuery();
+				$this->query=str_replace("{table}", $table, $this->query);
+				
+				$result=$this->executeQuery();
 			}
 			$this->liberar();
+			return $result;
 		}
 
 		//funcion para liberar memoria

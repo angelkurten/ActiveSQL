@@ -10,6 +10,7 @@
 		private static $db_user = 'root';
 		private static $db_pass = '';
 		private static $set_charset = 'utf8';
+		
 		protected $db_name = 'edificio';
 
 		protected $query;
@@ -17,7 +18,7 @@
 		private $conn;
 		public $mensaje = FALSE;
 
-		private $debug = TRUE;
+		private $debug = FALSE;
 		
 
 		//metodos abstractos para el CRUD
@@ -47,10 +48,9 @@
 				//abrir conexion
 				$this->open_connection();
 				//preparar la consulta
-				$result=$this->conn->query(addslashes($this->query));	
+				$result=$this->conn->query($this->query);	
 				//cerrar conexion
 				$this->close_connection();
-
 				return $result;
 			} catch (Exception $e){
 				die('Error al ejecutar la consulata: '.$e->getMessage());
