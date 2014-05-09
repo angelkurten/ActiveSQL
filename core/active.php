@@ -85,6 +85,26 @@
         	$this->where = rtrim($strQuery, ' and ');
         }
 
+        //funcion para realizar consultas tipo where
+        public function or_where(array $array) 
+        {
+        	$strQuery = '';
+
+        	//crear un array definitivo con los arrays anteriores
+        	foreach($array as $key => $value) {
+        		if (is_numeric($value)) {
+        			$value = '{table}.'.$key . ' = ' . "{$value}";
+        		}
+        		else{
+        			$value = '{table}.'.$key . ' = ' . "'{$value}'";
+        		}
+        		$strQuery .=  $value . ' or ';
+        	}
+        	
+        	//creo el sql definitivo
+        	$this->where = rtrim($strQuery, ' or ');
+        }
+
         public function orderBy(array $array, $orden = 'DESC')
 	    {
 	        $strQuery = '';
