@@ -1,24 +1,25 @@
 <?php
 	//require_once('core/lib.php');
-	// Ensure reporting is setup correctly 
-	mysqli_report(MYSQLI_REPORT_STRICT); 
+	require_once 'config.php';
 	//clase para manejo de la base de datos
 	abstract class db
 	{
 		//variables de conexion
-		private static $db_host = 'localhost';
-		private static $db_user = 'root';
-		private static $db_pass = '';
-		private static $set_charset = 'utf8';
+		private static $db_host = HOST;
+		private static $db_user = USER;
+		private static $db_pass = PASS;
+		private static $set_charset = CHARSET;
+
+		public $cache = CACHE;
 		
-		protected $db_name = 'edificio';
+		protected $db_name = DBNAME;
 
 		protected $query;
 		protected $rows = array();
 		private $conn;
 		public $mensaje = FALSE;
 
-		private $debug = FALSE;
+		private $debug = DEBUG;
 		
 
 		//metodos abstractos para el CRUD
@@ -63,6 +64,10 @@
 			try {
 				//abro la conexion
 				$this->open_connection();
+				if($this->cache)
+				{
+					$this->query = '/*qc=on*/'. $this->query;
+				}
 				if ($this->debug==TRUE) {
 					var_dump($this->query);
 				}
