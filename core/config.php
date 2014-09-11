@@ -1,6 +1,6 @@
 <?php
 	define('HOST', 'localhost');
-	define('DBNAME', 'edificio');
+	define('DBNAME', 'chat');
 	define('USER', 'root');
 	define('PASS', '');
 	define('CHARSET', 'utf-8');
